@@ -23,7 +23,6 @@
 		}
 	],
 	"TargetPlatforms": [
-		"PS4",
 		"WindowsNoEditor"
 	]
 }
