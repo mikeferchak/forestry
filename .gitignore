@@ -62,7 +62,18 @@ Saved/*
 art/*
 
 # Compiled source files for the engine to use
-Intermediate/*
+Intermediate/*.bin
+Intermediate/AssetRegistryCache/*
+Intermediate/Build/*
+Intermediate/Config/*
+Intermediate/ReimportCache/*
+Intermediate/Source/*
+Intermediate/Staging/*
+Intermediate/WindowsNoEditor/NativizedAssets/Binaries/*
+Intermediate/WindowsNoEditor/NativizedAssets/Intermediate/*
+Intermediate/WindowsNoEditor/NativizedAssets/*.uplugin
+Intermediate/WindowsNoEditor/NativizedAssets/*.json
+
 
 # Cache files for the editor to use
 DerivedDataCache/*
