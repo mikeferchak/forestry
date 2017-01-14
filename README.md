@@ -2,16 +2,18 @@
 
 ## setting up the project
 
-### install git
-https://desktop.github.com
+**install git**:  https://desktop.github.com
 
-### install git lfs
-https://git-lfs.github.com
+**install git lfs**: https://git-lfs.github.com
 
-### install ue4
-we're using 4.14 right now
-https://www.unrealengine.com/download?dismiss=https%3A%2F%2Fwww.unrealengine.com%2F
+**install ue4**: https://www.unrealengine.com/download?dismiss=https%3A%2F%2Fwww.unrealengine.com%2F
 
+**clone the project in github**: in github desktop, hit the plus sign and clone "forestry" from "mikeferchak"
+
+### open the project
+* right click the project
+* open in explorer
+* open forestry.uproject (or just open it from the epic launcher)
 
 
 ## some git commands for pros
