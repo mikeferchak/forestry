@@ -1,0 +1,4 @@
+ovr-platform-util upload-rift-build -a <AppID> -s <Token> -d <BuildPath> -l <LaunchFile> -c <ReleaseChannel> -v <Number> -n <Text> [-p <Arguments>] [-L <2DLaunchFile>] [-P <2DArguments>] [-r <RedistID>[,]...] [-f {true|false}] [-w {7SP1|8.1|10}]
+
+
+./ovr-platform-util upload-rift-build -a 842340449202399 -s 99985f3bf5afe145f1046f2df13743dd -d E:\Dropbox\3d\forestry\staging -l WindowsNoEditor/log.exe -w 10 -c alpha -v 0.037 -n "Improve tree billboards; Add max teleport distance; Add target and hay bales;"
