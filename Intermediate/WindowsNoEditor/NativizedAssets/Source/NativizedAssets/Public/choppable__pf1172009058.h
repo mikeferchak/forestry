@@ -8,7 +8,6 @@
 #include "Runtime/Engine/Classes/Engine/BlueprintGeneratedClass.h"
 #include "Runtime/CoreUObject/Public/UObject/NoExportTypes.h"
 #include "Runtime/Engine/Classes/Engine/EngineTypes.h"
-#include "Runtime/Engine/Classes/Components/AudioComponent.h"
 #include "Runtime/Engine/Classes/Components/StaticMeshComponent.h"
 #include "ProceduralMeshComponent.h"
 #include "Runtime/Engine/Classes/Engine/StaticMesh.h"
@@ -18,18 +17,6 @@
 struct FUnconvertedWrapper__Achoppable_C__pf1172009058 : public FUnconvertedWrapper<AActor>
 {
 	FUnconvertedWrapper__Achoppable_C__pf1172009058(const AActor* __InObject) : FUnconvertedWrapper<AActor>(__InObject){}
-	FORCENOINLINE UAudioComponent* & GetRef__windCue__pf()
-	{
-		static TWeakObjectPtr<UProperty> __PropertyPtr{};
-		const UProperty* __Property = __PropertyPtr.Get();
-		if (nullptr == __Property)
-		{
-			__Property = GetClass()->FindPropertyByName(FName(TEXT("windCue")));
-			check(__Property);
-			__PropertyPtr = __Property;
-		}
-		return *(__Property->ContainerPtrToValuePtr<UAudioComponent* >(__Object));
-	}
 	FORCENOINLINE UStaticMeshComponent* & GetRef__staticmeshref__pf()
 	{
 		static TWeakObjectPtr<UProperty> __PropertyPtr{};
