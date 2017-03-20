@@ -209,13 +209,12 @@
 #include "Runtime/Engine/Public/PhysicsSerializer.h"
 #include "Runtime/HeadMountedDisplay/Public/MotionControllerComponent.h"
 #include "Runtime/HeadMountedDisplay/Public/IMotionController.h"
+#include "Runtime/Engine/Classes/Kismet/KismetSystemLibrary.h"
 #include "Runtime/Engine/Classes/Kismet/GameplayStatics.h"
 #include "Runtime/Engine/Classes/Sound/ReverbEffect.h"
 #include "Runtime/Engine/Classes/Engine/Blueprint.h"
 #include "Runtime/Engine/Classes/Engine/BlueprintCore.h"
 #include "Runtime/Engine/Classes/Kismet/GameplayStaticsTypes.h"
-#include "Runtime/Engine/Classes/Kismet/KismetSystemLibrary.h"
-#include "Runtime/Engine/Classes/Kismet/KismetMathLibrary.h"
 #include "Enum_Grip__pf3811345418.h"
 #include "Runtime/Engine/Classes/Components/SplineMeshComponent.h"
 #include "SteamVRChaperoneComponent.h"
@@ -255,6 +254,7 @@
 #include "Runtime/Engine/Classes/Sound/DialogueTypes.h"
 #include "Runtime/Engine/Classes/Sound/DialogueVoice.h"
 #include "Runtime/Engine/Classes/Sound/DialogueWave.h"
+#include "Runtime/Engine/Classes/Kismet/KismetMathLibrary.h"
 #include "Runtime/Engine/Classes/Kismet/KismetArrayLibrary.h"
 #include "KismetProceduralMeshLibrary.h"
 #include "Runtime/Engine/Classes/Components/DecalComponent.h"
@@ -430,23 +430,23 @@ void Aweapon_C__pf1418999182::bpf__ExecuteUbergraph_weapon__pf_0(int32 bpp__Entr
 	{
 		switch( __CurrentState )
 		{
-		case 1:
+		case 9:
+			{
+				__CurrentState = 10;
+				break;
+			}
+		case 10:
 			{
 				bpv__canPlayChopSound__pf = true;
 				__CurrentState = (__StateStack.Num() > 0) ? __StateStack.Pop(/*bAllowShrinking=*/ false) : -1;
 				break;
 			}
-		case 5:
+		case 22:
 			{
-				__CurrentState = 1;
+				__CurrentState = 23;
 				break;
 			}
-		case 19:
-			{
-				__CurrentState = 20;
-				break;
-			}
-		case 20:
+		case 23:
 			{
 				bpfv__CallFunc_IsValid_ReturnValue2__pf = UKismetSystemLibrary::IsValid(b0l__K2Node_ComponentBoundEvent_OtherActor__pf);
 				if (!bpfv__CallFunc_IsValid_ReturnValue2__pf)
@@ -455,7 +455,7 @@ void Aweapon_C__pf1418999182::bpf__ExecuteUbergraph_weapon__pf_0(int32 bpp__Entr
 					break;
 				}
 			}
-		case 21:
+		case 24:
 			{
 				bpfv__CallFunc_IsValid_ReturnValue__pf = UKismetSystemLibrary::IsValid(b0l__K2Node_ComponentBoundEvent_OtherComp__pf);
 				if (!bpfv__CallFunc_IsValid_ReturnValue__pf)
@@ -464,12 +464,12 @@ void Aweapon_C__pf1418999182::bpf__ExecuteUbergraph_weapon__pf_0(int32 bpp__Entr
 					break;
 				}
 			}
-		case 22:
+		case 25:
 			{
-				__StateStack.Push(30);
-				__StateStack.Push(25);
+				__StateStack.Push(33);
+				__StateStack.Push(28);
 			}
-		case 23:
+		case 26:
 			{
 				bpfv__CallFunc_IsValid_ReturnValue3__pf = UKismetSystemLibrary::IsValid(bpv__controller__pf);
 				if (!bpfv__CallFunc_IsValid_ReturnValue3__pf)
@@ -478,7 +478,7 @@ void Aweapon_C__pf1418999182::bpf__ExecuteUbergraph_weapon__pf_0(int32 bpp__Entr
 					break;
 				}
 			}
-		case 24:
+		case 27:
 			{
 				if(IsValid(bpv__controller__pf))
 				{
@@ -487,11 +487,11 @@ void Aweapon_C__pf1418999182::bpf__ExecuteUbergraph_weapon__pf_0(int32 bpp__Entr
 				__CurrentState = (__StateStack.Num() > 0) ? __StateStack.Pop(/*bAllowShrinking=*/ false) : -1;
 				break;
 			}
-		case 25:
+		case 28:
 			{
 				bpf__tryToChopFoliage__pf(b0l__K2Node_ComponentBoundEvent_Hit__pf, b0l__K2Node_ComponentBoundEvent_OtherActor__pf, b0l__K2Node_ComponentBoundEvent_OtherComp__pf, b0l__K2Node_ComponentBoundEvent_NormalImpulse__pf, /*out*/ b0l__CallFunc_tryToChopFoliage_sound__pf, /*out*/ b0l__CallFunc_tryToChopFoliage_success__pf);
 			}
-		case 26:
+		case 29:
 			{
 				if (!bpv__canPlayChopSound__pf)
 				{
@@ -499,21 +499,21 @@ void Aweapon_C__pf1418999182::bpf__ExecuteUbergraph_weapon__pf_0(int32 bpp__Entr
 					break;
 				}
 			}
-		case 27:
+		case 30:
 			{
 				bpv__canPlayChopSound__pf = false;
 			}
-		case 28:
+		case 31:
 			{
 				bpf__randomChopSound__pf(b0l__K2Node_ComponentBoundEvent_NormalImpulse__pf, b0l__K2Node_ComponentBoundEvent_Hit__pf, /*out*/ b0l__CallFunc_randomChopSound_sound__pf);
 			}
-		case 29:
+		case 32:
 			{
-				UKismetSystemLibrary::Delay(this, 0.300000, FLatentActionInfo(5, 1944633129, TEXT("ExecuteUbergraph_weapon_0"), this));
+				UKismetSystemLibrary::Delay(this, 0.300000, FLatentActionInfo(9, 1944633129, TEXT("ExecuteUbergraph_weapon_0"), this));
 				__CurrentState = (__StateStack.Num() > 0) ? __StateStack.Pop(/*bAllowShrinking=*/ false) : -1;
 				break;
 			}
-		case 30:
+		case 33:
 			{
 				bpf__tryToChopProcMesh__pf(b0l__K2Node_ComponentBoundEvent_OtherActor__pf, b0l__K2Node_ComponentBoundEvent_OtherComp__pf, b0l__K2Node_ComponentBoundEvent_NormalImpulse__pf, b0l__K2Node_ComponentBoundEvent_Hit__pf);
 				__CurrentState = (__StateStack.Num() > 0) ? __StateStack.Pop(/*bAllowShrinking=*/ false) : -1;
@@ -529,12 +529,6 @@ void Aweapon_C__pf1418999182::bpf__ExecuteUbergraph_weapon__pf_1(int32 bpp__Entr
 {
 	FVector bpfv__CallFunc_K2_GetComponentLocation_ReturnValue__pf(EForceInit::ForceInit);
 	FVector bpfv__CallFunc_K2_GetComponentLocation_ReturnValue2__pf(EForceInit::ForceInit);
-	FVector bpfv__CallFunc_K2_GetComponentLocation_ReturnValue3__pf(EForceInit::ForceInit);
-	FVector bpfv__CallFunc_Subtract_VectorVector_ReturnValue__pf(EForceInit::ForceInit);
-	FVector bpfv__CallFunc_K2_GetComponentLocation_ReturnValue4__pf(EForceInit::ForceInit);
-	float bpfv__CallFunc_VSize_ReturnValue__pf{};
-	float bpfv__CallFunc_Abs_ReturnValue__pf{};
-	float bpfv__CallFunc_Divide_FloatFloat_ReturnValue__pf{};
 	bool bpfv__CallFunc_LineTraceSingleForObjects_ReturnValue__pf{};
 	TArray< int32, TInlineAllocator<8> > __StateStack;
 
@@ -543,11 +537,11 @@ void Aweapon_C__pf1418999182::bpf__ExecuteUbergraph_weapon__pf_1(int32 bpp__Entr
 	{
 		switch( __CurrentState )
 		{
-		case 6:
+		case 11:
 			{
-				__StateStack.Push(9);
+				__StateStack.Push(14);
 			}
-		case 7:
+		case 12:
 			{
 				UGameplayStatics::BreakHitResult(b0l__CallFunc_LineTraceSingleForObjects_OutHit__pf, /*out*/ b0l__CallFunc_BreakHitResult_bBlockingHit__pf, /*out*/ b0l__CallFunc_BreakHitResult_bInitialOverlap__pf, /*out*/ b0l__CallFunc_BreakHitResult_Time__pf, /*out*/ b0l__CallFunc_BreakHitResult_Location__pf, /*out*/ b0l__CallFunc_BreakHitResult_ImpactPoint__pf, /*out*/ b0l__CallFunc_BreakHitResult_Normal__pf, /*out*/ b0l__CallFunc_BreakHitResult_ImpactNormal__pf, /*out*/ b0l__CallFunc_BreakHitResult_PhysMat__pf, /*out*/ b0l__CallFunc_BreakHitResult_HitActor__pf, /*out*/ b0l__CallFunc_BreakHitResult_HitComponent__pf, /*out*/ b0l__CallFunc_BreakHitResult_HitBoneName__pf, /*out*/ b0l__CallFunc_BreakHitResult_HitItem__pf, /*out*/ b0l__CallFunc_BreakHitResult_FaceIndex__pf, /*out*/ b0l__CallFunc_BreakHitResult_TraceStart__pf, /*out*/ b0l__CallFunc_BreakHitResult_TraceEnd__pf);
 				b0l__K2Node_DynamicCast_AsFoliage_Instanced_Static_Mesh_Component__pf = Cast<UFoliageInstancedStaticMeshComponent>(b0l__CallFunc_BreakHitResult_HitComponent__pf);
@@ -558,14 +552,14 @@ void Aweapon_C__pf1418999182::bpf__ExecuteUbergraph_weapon__pf_1(int32 bpp__Entr
 					break;
 				}
 			}
-		case 8:
+		case 13:
 			{
 				UGameplayStatics::BreakHitResult(b0l__CallFunc_LineTraceSingleForObjects_OutHit__pf, /*out*/ b0l__CallFunc_BreakHitResult_bBlockingHit__pf, /*out*/ b0l__CallFunc_BreakHitResult_bInitialOverlap__pf, /*out*/ b0l__CallFunc_BreakHitResult_Time__pf, /*out*/ b0l__CallFunc_BreakHitResult_Location__pf, /*out*/ b0l__CallFunc_BreakHitResult_ImpactPoint__pf, /*out*/ b0l__CallFunc_BreakHitResult_Normal__pf, /*out*/ b0l__CallFunc_BreakHitResult_ImpactNormal__pf, /*out*/ b0l__CallFunc_BreakHitResult_PhysMat__pf, /*out*/ b0l__CallFunc_BreakHitResult_HitActor__pf, /*out*/ b0l__CallFunc_BreakHitResult_HitComponent__pf, /*out*/ b0l__CallFunc_BreakHitResult_HitBoneName__pf, /*out*/ b0l__CallFunc_BreakHitResult_HitItem__pf, /*out*/ b0l__CallFunc_BreakHitResult_FaceIndex__pf, /*out*/ b0l__CallFunc_BreakHitResult_TraceStart__pf, /*out*/ b0l__CallFunc_BreakHitResult_TraceEnd__pf);
 				bpf__tryToChopFoliage__pf(b0l__CallFunc_LineTraceSingleForObjects_OutHit__pf, b0l__CallFunc_BreakHitResult_HitActor__pf, b0l__K2Node_DynamicCast_AsFoliage_Instanced_Static_Mesh_Component__pf, FVector(-10000.000000,0.000000,0.000000), /*out*/ b0l__CallFunc_tryToChopFoliage_sound2__pf, /*out*/ b0l__CallFunc_tryToChopFoliage_success2__pf);
 				__CurrentState = (__StateStack.Num() > 0) ? __StateStack.Pop(/*bAllowShrinking=*/ false) : -1;
 				break;
 			}
-		case 9:
+		case 14:
 			{
 				UGameplayStatics::BreakHitResult(b0l__CallFunc_LineTraceSingleForObjects_OutHit__pf, /*out*/ b0l__CallFunc_BreakHitResult_bBlockingHit__pf, /*out*/ b0l__CallFunc_BreakHitResult_bInitialOverlap__pf, /*out*/ b0l__CallFunc_BreakHitResult_Time__pf, /*out*/ b0l__CallFunc_BreakHitResult_Location__pf, /*out*/ b0l__CallFunc_BreakHitResult_ImpactPoint__pf, /*out*/ b0l__CallFunc_BreakHitResult_Normal__pf, /*out*/ b0l__CallFunc_BreakHitResult_ImpactNormal__pf, /*out*/ b0l__CallFunc_BreakHitResult_PhysMat__pf, /*out*/ b0l__CallFunc_BreakHitResult_HitActor__pf, /*out*/ b0l__CallFunc_BreakHitResult_HitComponent__pf, /*out*/ b0l__CallFunc_BreakHitResult_HitBoneName__pf, /*out*/ b0l__CallFunc_BreakHitResult_HitItem__pf, /*out*/ b0l__CallFunc_BreakHitResult_FaceIndex__pf, /*out*/ b0l__CallFunc_BreakHitResult_TraceStart__pf, /*out*/ b0l__CallFunc_BreakHitResult_TraceEnd__pf);
 				b0l__K2Node_DynamicCast_AsChoppable__pf = NoNativeCast<AActor>(CastChecked<UClass>(CastChecked<UDynamicClass>(Aweapon_C__pf1418999182::StaticClass())->UsedAssets[22], ECastCheckedType::NullAllowed), b0l__CallFunc_BreakHitResult_HitActor__pf);
@@ -576,14 +570,14 @@ void Aweapon_C__pf1418999182::bpf__ExecuteUbergraph_weapon__pf_1(int32 bpp__Entr
 					break;
 				}
 			}
-		case 10:
+		case 15:
 			{
 				UGameplayStatics::BreakHitResult(b0l__CallFunc_LineTraceSingleForObjects_OutHit__pf, /*out*/ b0l__CallFunc_BreakHitResult_bBlockingHit__pf, /*out*/ b0l__CallFunc_BreakHitResult_bInitialOverlap__pf, /*out*/ b0l__CallFunc_BreakHitResult_Time__pf, /*out*/ b0l__CallFunc_BreakHitResult_Location__pf, /*out*/ b0l__CallFunc_BreakHitResult_ImpactPoint__pf, /*out*/ b0l__CallFunc_BreakHitResult_Normal__pf, /*out*/ b0l__CallFunc_BreakHitResult_ImpactNormal__pf, /*out*/ b0l__CallFunc_BreakHitResult_PhysMat__pf, /*out*/ b0l__CallFunc_BreakHitResult_HitActor__pf, /*out*/ b0l__CallFunc_BreakHitResult_HitComponent__pf, /*out*/ b0l__CallFunc_BreakHitResult_HitBoneName__pf, /*out*/ b0l__CallFunc_BreakHitResult_HitItem__pf, /*out*/ b0l__CallFunc_BreakHitResult_FaceIndex__pf, /*out*/ b0l__CallFunc_BreakHitResult_TraceStart__pf, /*out*/ b0l__CallFunc_BreakHitResult_TraceEnd__pf);
 				bpf__tryToChopProcMesh__pf(b0l__K2Node_DynamicCast_AsChoppable__pf, b0l__CallFunc_BreakHitResult_HitComponent__pf, FVector(-10000.000000,0.000000,0.000000), b0l__CallFunc_LineTraceSingleForObjects_OutHit__pf);
 				__CurrentState = (__StateStack.Num() > 0) ? __StateStack.Pop(/*bAllowShrinking=*/ false) : -1;
 				break;
 			}
-		case 11:
+		case 16:
 			{
 				if (!bpv__canchop__pf)
 				{
@@ -591,7 +585,7 @@ void Aweapon_C__pf1418999182::bpf__ExecuteUbergraph_weapon__pf_1(int32 bpp__Entr
 					break;
 				}
 			}
-		case 12:
+		case 17:
 			{
 				if (!bpv__isGrabbing__pf)
 				{
@@ -599,7 +593,7 @@ void Aweapon_C__pf1418999182::bpf__ExecuteUbergraph_weapon__pf_1(int32 bpp__Entr
 					break;
 				}
 			}
-		case 13:
+		case 18:
 			{
 				b0l__K2Node_MakeArray_Array__pf.SetNum(1, true);
 				b0l__K2Node_MakeArray_Array__pf[0] = EObjectTypeQuery::ObjectTypeQuery8;
@@ -613,55 +607,19 @@ void Aweapon_C__pf1418999182::bpf__ExecuteUbergraph_weapon__pf_1(int32 bpp__Entr
 				}
 				bpfv__CallFunc_LineTraceSingleForObjects_ReturnValue__pf = UKismetSystemLibrary::LineTraceSingleForObjects(this, bpfv__CallFunc_K2_GetComponentLocation_ReturnValue2__pf, bpfv__CallFunc_K2_GetComponentLocation_ReturnValue__pf, b0l__K2Node_MakeArray_Array__pf, false, b0l__Temp_object_Variable__pf, EDrawDebugTrace::None, /*out*/ b0l__CallFunc_LineTraceSingleForObjects_OutHit__pf, true, FLinearColor(1.000000,0.000000,0.000000,1.000000), FLinearColor(0.000000,1.000000,0.000000,1.000000), b0l__K2Node_Event_DeltaSeconds__pf);
 			}
-		case 14:
+		case 19:
 			{
 				if (!bpfv__CallFunc_LineTraceSingleForObjects_ReturnValue__pf)
 				{
 					__CurrentState = (__StateStack.Num() > 0) ? __StateStack.Pop(/*bAllowShrinking=*/ false) : -1;
 					break;
 				}
-				__CurrentState = 6;
-				break;
-			}
-		case 15:
-			{
-				if(IsValid(StaticMeshComponent))
-				{
-					bpfv__CallFunc_K2_GetComponentLocation_ReturnValue4__pf = StaticMeshComponent->USceneComponent::K2_GetComponentLocation();
-				}
-				bpv__location__pf = bpfv__CallFunc_K2_GetComponentLocation_ReturnValue4__pf;
-				__CurrentState = (__StateStack.Num() > 0) ? __StateStack.Pop(/*bAllowShrinking=*/ false) : -1;
-				break;
-			}
-		case 17:
-			{
-				if(IsValid(StaticMeshComponent))
-				{
-					bpfv__CallFunc_K2_GetComponentLocation_ReturnValue3__pf = StaticMeshComponent->USceneComponent::K2_GetComponentLocation();
-				}
-				bpfv__CallFunc_Subtract_VectorVector_ReturnValue__pf = UKismetMathLibrary::Subtract_VectorVector(bpv__location__pf, bpfv__CallFunc_K2_GetComponentLocation_ReturnValue3__pf);
-				bpfv__CallFunc_VSize_ReturnValue__pf = UKismetMathLibrary::VSize(bpfv__CallFunc_Subtract_VectorVector_ReturnValue__pf);
-				bpfv__CallFunc_Abs_ReturnValue__pf = UKismetMathLibrary::Abs(bpfv__CallFunc_VSize_ReturnValue__pf);
-				bpfv__CallFunc_Divide_FloatFloat_ReturnValue__pf = FCustomThunkTemplates::Divide_FloatFloat(bpfv__CallFunc_Abs_ReturnValue__pf, bpv__tickDelta__pf);
-				bpv__speed__pf = bpfv__CallFunc_Divide_FloatFloat_ReturnValue__pf;
-				__CurrentState = 15;
-				break;
-			}
-		case 61:
-			{
-				__CurrentState = 62;
-				break;
-			}
-		case 62:
-			{
-				__StateStack.Push(63);
 				__CurrentState = 11;
 				break;
 			}
-		case 63:
+		case 60:
 			{
-				bpv__tickDelta__pf = b0l__K2Node_Event_DeltaSeconds__pf;
-				__CurrentState = 17;
+				__CurrentState = 16;
 				break;
 			}
 		default:
@@ -672,95 +630,8 @@ void Aweapon_C__pf1418999182::bpf__ExecuteUbergraph_weapon__pf_1(int32 bpp__Entr
 }
 void Aweapon_C__pf1418999182::bpf__ExecuteUbergraph_weapon__pf_2(int32 bpp__EntryPoint__pf)
 {
-	bool bpfv__CallFunc_GreaterEqual_FloatFloat_ReturnValue__pf{};
-	TArray< int32, TInlineAllocator<8> > __StateStack;
-
-	int32 __CurrentState = bpp__EntryPoint__pf;
-	do
-	{
-		switch( __CurrentState )
-		{
-		case 2:
-			{
-				__CurrentState = 3;
-				break;
-			}
-		case 3:
-			{
-				if (!bpv__canDespawn__pf)
-				{
-					__CurrentState = (__StateStack.Num() > 0) ? __StateStack.Pop(/*bAllowShrinking=*/ false) : -1;
-					break;
-				}
-			}
-		case 4:
-			{
-				K2_DestroyActor();
-				__CurrentState = (__StateStack.Num() > 0) ? __StateStack.Pop(/*bAllowShrinking=*/ false) : -1;
-				break;
-			}
-		case 52:
-			{
-				__CurrentState = 53;
-				break;
-			}
-		case 53:
-			{
-				__StateStack.Push(59);
-			}
-		case 54:
-			{
-				bpv__canDespawn__pf = true;
-			}
-		case 55:
-			{
-				if(IsValid(b0l__K2Node_Event_component__pf))
-				{
-					b0l__K2Node_Event_component__pf->SetSimulatePhysics(true);
-				}
-			}
-		case 56:
-			{
-				if(IsValid(b0l__K2Node_Event_component__pf))
-				{
-					b0l__K2Node_Event_component__pf->USceneComponent::K2_DetachFromComponent(EDetachmentRule::KeepRelative, EDetachmentRule::KeepRelative, EDetachmentRule::KeepRelative, true);
-				}
-			}
-		case 57:
-			{
-				bpv__controller__pf = ((AActor*)nullptr);
-			}
-		case 58:
-			{
-				UKismetSystemLibrary::Delay(this, 60.000000, FLatentActionInfo(2, 1680933309, TEXT("ExecuteUbergraph_weapon_2"), this));
-				__CurrentState = (__StateStack.Num() > 0) ? __StateStack.Pop(/*bAllowShrinking=*/ false) : -1;
-				break;
-			}
-		case 59:
-			{
-				bpfv__CallFunc_GreaterEqual_FloatFloat_ReturnValue__pf = UKismetMathLibrary::GreaterEqual_FloatFloat(bpv__speed__pf, 100.000000);
-				if (!bpfv__CallFunc_GreaterEqual_FloatFloat_ReturnValue__pf)
-				{
-					__CurrentState = (__StateStack.Num() > 0) ? __StateStack.Pop(/*bAllowShrinking=*/ false) : -1;
-					break;
-				}
-			}
-		case 60:
-			{
-				bpf__randomSwooshSound__pf(bpv__speed__pf);
-				__CurrentState = (__StateStack.Num() > 0) ? __StateStack.Pop(/*bAllowShrinking=*/ false) : -1;
-				break;
-			}
-		default:
-			check(false); // Invalid state
-			break;
-		}
-	} while( __CurrentState != -1 );
-}
-void Aweapon_C__pf1418999182::bpf__ExecuteUbergraph_weapon__pf_3(int32 bpp__EntryPoint__pf)
-{
 	bool bpfv__CallFunc_K2_AttachToComponent_ReturnValue__pf{};
-	FVector bpfv__CallFunc_K2_GetComponentLocation_ReturnValue5__pf(EForceInit::ForceInit);
+	FVector bpfv__CallFunc_K2_GetComponentLocation_ReturnValue3__pf(EForceInit::ForceInit);
 	AActor* bpfv__CallFunc_GetOwner_ReturnValue__pf{};
 	FTransform bpfv__CallFunc_GetRelativeTransform_ReturnValue__pf{};
 	FTransform bpfv__CallFunc_K2_GetComponentToWorld_ReturnValue__pf{};
@@ -771,39 +642,39 @@ void Aweapon_C__pf1418999182::bpf__ExecuteUbergraph_weapon__pf_3(int32 bpp__Entr
 	{
 		switch( __CurrentState )
 		{
-		case 34:
+		case 37:
 			{
-				__CurrentState = 35;
+				__CurrentState = 38;
 				break;
 			}
-		case 35:
+		case 38:
 			{
 				bpv__isGrabbing__pf = true;
 			}
-		case 36:
+		case 39:
 			{
 				bpv__canDespawn__pf = false;
 			}
-		case 37:
+		case 40:
 			{
 				if(IsValid(b0l__K2Node_Event_Component2__pf))
 				{
 					b0l__K2Node_Event_Component2__pf->SetSimulatePhysics(false);
 				}
 			}
-		case 38:
+		case 41:
 			{
 				if(IsValid(StaticMeshComponent))
 				{
 					StaticMeshComponent->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 				}
 			}
-		case 39:
+		case 42:
 			{
-				__StateStack.Push(46);
 				__StateStack.Push(49);
+				__StateStack.Push(52);
 			}
-		case 40:
+		case 43:
 			{
 				b0l__K2Node_DynamicCast_AsMotion_Controller_Component__pf = Cast<UMotionControllerComponent>(b0l__K2Node_Event_AttachTo__pf);
 				b0l__K2Node_DynamicCast_bSuccess__pf = (b0l__K2Node_DynamicCast_AsMotion_Controller_Component__pf != nullptr);;
@@ -813,7 +684,7 @@ void Aweapon_C__pf1418999182::bpf__ExecuteUbergraph_weapon__pf_3(int32 bpp__Entr
 					break;
 				}
 			}
-		case 41:
+		case 44:
 			{
 				if(IsValid(b0l__K2Node_DynamicCast_AsMotion_Controller_Component__pf))
 				{
@@ -827,11 +698,11 @@ void Aweapon_C__pf1418999182::bpf__ExecuteUbergraph_weapon__pf_3(int32 bpp__Entr
 					break;
 				}
 			}
-		case 42:
+		case 45:
 			{
 				bpv__controller__pf = b0l__K2Node_DynamicCast_AsBP_Motion_Controller__pf;
 			}
-		case 43:
+		case 46:
 			{
 				if(IsValid(bpv__grabDirection__pf))
 				{
@@ -842,7 +713,7 @@ void Aweapon_C__pf1418999182::bpf__ExecuteUbergraph_weapon__pf_3(int32 bpp__Entr
 					FUnconvertedWrapper__ABP_MotionController_C__pf563933975(bpv__controller__pf).GetRef__axeGrabDirection__pf()->USceneComponent::K2_SetRelativeTransform(bpfv__CallFunc_GetRelativeTransform_ReturnValue__pf, false, /*out*/ b0l__CallFunc_K2_SetRelativeTransform_SweepHitResult__pf, false);
 				}
 			}
-		case 44:
+		case 47:
 			{
 				if(IsValid(bpv__controller__pf) && IsValid(FUnconvertedWrapper__ABP_MotionController_C__pf563933975(bpv__controller__pf).GetRef__axeGrabDirection__pf()))
 				{
@@ -853,7 +724,7 @@ void Aweapon_C__pf1418999182::bpf__ExecuteUbergraph_weapon__pf_3(int32 bpp__Entr
 					StaticMeshComponent->USceneComponent::K2_SetWorldTransform(bpfv__CallFunc_K2_GetComponentToWorld_ReturnValue__pf, false, /*out*/ b0l__CallFunc_K2_SetWorldTransform_SweepHitResult__pf, true);
 				}
 			}
-		case 45:
+		case 48:
 			{
 				if(IsValid(bpv__controller__pf))
 				{
@@ -862,36 +733,36 @@ void Aweapon_C__pf1418999182::bpf__ExecuteUbergraph_weapon__pf_3(int32 bpp__Entr
 				__CurrentState = (__StateStack.Num() > 0) ? __StateStack.Pop(/*bAllowShrinking=*/ false) : -1;
 				break;
 			}
-		case 46:
+		case 49:
 			{
 				if (!bpv__holstered__pf)
 				{
-					__CurrentState = 48;
+					__CurrentState = 51;
 					break;
 				}
 			}
-		case 47:
+		case 50:
 			{
 				if(IsValid(b0l__K2Node_Event_AttachTo__pf))
 				{
-					bpfv__CallFunc_K2_GetComponentLocation_ReturnValue5__pf = b0l__K2Node_Event_AttachTo__pf->USceneComponent::K2_GetComponentLocation();
+					bpfv__CallFunc_K2_GetComponentLocation_ReturnValue3__pf = b0l__K2Node_Event_AttachTo__pf->USceneComponent::K2_GetComponentLocation();
 				}
-				UGameplayStatics::PlaySoundAtLocation(this, CastChecked<USoundBase>(CastChecked<UDynamicClass>(Aweapon_C__pf1418999182::StaticClass())->UsedAssets[24], ECastCheckedType::NullAllowed), bpfv__CallFunc_K2_GetComponentLocation_ReturnValue5__pf, FRotator(0.000000,0.000000,0.000000), 0.500000, 1.000000, 0.000000, CastChecked<USoundAttenuation>(CastChecked<UDynamicClass>(Aweapon_C__pf1418999182::StaticClass())->UsedAssets[25], ECastCheckedType::NullAllowed), ((USoundConcurrency*)nullptr));
+				UGameplayStatics::PlaySoundAtLocation(this, CastChecked<USoundBase>(CastChecked<UDynamicClass>(Aweapon_C__pf1418999182::StaticClass())->UsedAssets[24], ECastCheckedType::NullAllowed), bpfv__CallFunc_K2_GetComponentLocation_ReturnValue3__pf, FRotator(0.000000,0.000000,0.000000), 0.500000, 1.000000, 0.000000, CastChecked<USoundAttenuation>(CastChecked<UDynamicClass>(Aweapon_C__pf1418999182::StaticClass())->UsedAssets[25], ECastCheckedType::NullAllowed), ((USoundConcurrency*)nullptr));
 			}
-		case 48:
+		case 51:
 			{
 				bpv__holstered__pf = false;
 				__CurrentState = (__StateStack.Num() > 0) ? __StateStack.Pop(/*bAllowShrinking=*/ false) : -1;
 				break;
 			}
-		case 49:
+		case 52:
 			{
 				if(IsValid(b0l__K2Node_Event_Component2__pf))
 				{
 					bpfv__CallFunc_K2_AttachToComponent_ReturnValue__pf = b0l__K2Node_Event_Component2__pf->USceneComponent::K2_AttachToComponent(b0l__K2Node_Event_AttachTo__pf, FName(TEXT("None")), EAttachmentRule::KeepWorld, EAttachmentRule::KeepWorld, EAttachmentRule::KeepWorld, false);
 				}
 			}
-		case 50:
+		case 53:
 			{
 				if (!bpfv__CallFunc_K2_AttachToComponent_ReturnValue__pf)
 				{
@@ -899,9 +770,114 @@ void Aweapon_C__pf1418999182::bpf__ExecuteUbergraph_weapon__pf_3(int32 bpp__Entr
 					break;
 				}
 			}
-		case 51:
+		case 54:
 			{
 				bpv__hasBeenGripped__pf = true;
+				__CurrentState = (__StateStack.Num() > 0) ? __StateStack.Pop(/*bAllowShrinking=*/ false) : -1;
+				break;
+			}
+		default:
+			check(false); // Invalid state
+			break;
+		}
+	} while( __CurrentState != -1 );
+}
+void Aweapon_C__pf1418999182::bpf__ExecuteUbergraph_weapon__pf_3(int32 bpp__EntryPoint__pf)
+{
+	FVector bpfv__CallFunc_GetComponentVelocity_ReturnValue__pf(EForceInit::ForceInit);
+	float bpfv__CallFunc_VSize_ReturnValue__pf{};
+	bool bpfv__CallFunc_GreaterEqual_FloatFloat_ReturnValue__pf{};
+	TArray< int32, TInlineAllocator<8> > __StateStack;
+
+	int32 __CurrentState = bpp__EntryPoint__pf;
+	do
+	{
+		switch( __CurrentState )
+		{
+		case 1:
+			{
+				bpv__isGrabbing__pf = false;
+			}
+		case 2:
+			{
+				if(IsValid(b0l__K2Node_Event_component__pf))
+				{
+					b0l__K2Node_Event_component__pf->SetSimulatePhysics(true);
+				}
+			}
+		case 3:
+			{
+				if(IsValid(b0l__K2Node_Event_component__pf))
+				{
+					b0l__K2Node_Event_component__pf->USceneComponent::K2_DetachFromComponent(EDetachmentRule::KeepRelative, EDetachmentRule::KeepRelative, EDetachmentRule::KeepRelative, true);
+				}
+			}
+		case 4:
+			{
+				bpv__controller__pf = ((AActor*)nullptr);
+			}
+		case 5:
+			{
+				UKismetSystemLibrary::Delay(this, 60.000000, FLatentActionInfo(6, 1680933309, TEXT("ExecuteUbergraph_weapon_3"), this));
+				__CurrentState = (__StateStack.Num() > 0) ? __StateStack.Pop(/*bAllowShrinking=*/ false) : -1;
+				break;
+			}
+		case 6:
+			{
+				__CurrentState = 7;
+				break;
+			}
+		case 7:
+			{
+				if (!bpv__canDespawn__pf)
+				{
+					__CurrentState = (__StateStack.Num() > 0) ? __StateStack.Pop(/*bAllowShrinking=*/ false) : -1;
+					break;
+				}
+			}
+		case 8:
+			{
+				K2_DestroyActor();
+				__CurrentState = (__StateStack.Num() > 0) ? __StateStack.Pop(/*bAllowShrinking=*/ false) : -1;
+				break;
+			}
+		case 55:
+			{
+				__CurrentState = 56;
+				break;
+			}
+		case 56:
+			{
+				__StateStack.Push(58);
+			}
+		case 57:
+			{
+				bpv__canDespawn__pf = true;
+				__CurrentState = 1;
+				break;
+			}
+		case 58:
+			{
+				if(IsValid(b0l__K2Node_Event_component__pf))
+				{
+					bpfv__CallFunc_GetComponentVelocity_ReturnValue__pf = b0l__K2Node_Event_component__pf->GetComponentVelocity();
+				}
+				bpfv__CallFunc_VSize_ReturnValue__pf = UKismetMathLibrary::VSize(bpfv__CallFunc_GetComponentVelocity_ReturnValue__pf);
+				bpfv__CallFunc_GreaterEqual_FloatFloat_ReturnValue__pf = UKismetMathLibrary::GreaterEqual_FloatFloat(bpfv__CallFunc_VSize_ReturnValue__pf, 100.000000);
+				if (!bpfv__CallFunc_GreaterEqual_FloatFloat_ReturnValue__pf)
+				{
+					__CurrentState = (__StateStack.Num() > 0) ? __StateStack.Pop(/*bAllowShrinking=*/ false) : -1;
+					break;
+				}
+			}
+		case 59:
+			{
+				if(IsValid(b0l__K2Node_Event_component__pf))
+				{
+					bpfv__CallFunc_GetComponentVelocity_ReturnValue__pf = b0l__K2Node_Event_component__pf->GetComponentVelocity();
+				}
+				bpfv__CallFunc_VSize_ReturnValue__pf = UKismetMathLibrary::VSize(bpfv__CallFunc_GetComponentVelocity_ReturnValue__pf);
+				bpf__randomSwooshSound__pf(bpfv__CallFunc_VSize_ReturnValue__pf);
 				__CurrentState = (__StateStack.Num() > 0) ? __StateStack.Pop(/*bAllowShrinking=*/ false) : -1;
 				break;
 			}
@@ -918,23 +894,23 @@ void Aweapon_C__pf1418999182::bpf__ExecuteUbergraph_weapon__pf_4(int32 bpp__Entr
 	{
 		switch( __CurrentState )
 		{
-		case 31:
+		case 34:
 			{
-				__CurrentState = 32;
+				__CurrentState = 35;
 				break;
 			}
-		case 32:
+		case 35:
 			{
 				if(IsValid(StaticMeshComponent))
 				{
 					StaticMeshComponent->SetSimulatePhysics(bpv__init_with_physics__pf);
 				}
 			}
-		case 33:
+		case 36:
 			{
 				if(IsValid(StaticMeshComponent))
 				{
-					StaticMeshComponent->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+					StaticMeshComponent->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
 				}
 				__CurrentState = -1;
 				break;
@@ -951,7 +927,7 @@ void Aweapon_C__pf1418999182::bpf__ExecuteUbergraph_weapon__pf_5(int32 bpp__Entr
 	{
 		switch( __CurrentState )
 		{
-		case 18:
+		case 21:
 			{
 				__CurrentState = -1;
 				break;
@@ -968,7 +944,7 @@ void Aweapon_C__pf1418999182::bpf__ExecuteUbergraph_weapon__pf_6(int32 bpp__Entr
 	{
 		switch( __CurrentState )
 		{
-		case 16:
+		case 20:
 			{
 				__CurrentState = -1;
 				break;
@@ -981,22 +957,22 @@ void Aweapon_C__pf1418999182::bpf__ExecuteUbergraph_weapon__pf_6(int32 bpp__Entr
 void Aweapon_C__pf1418999182::bpf__ReceiveTick__pf(float bpp__DeltaSeconds__pf)
 {
 	b0l__K2Node_Event_DeltaSeconds__pf = bpp__DeltaSeconds__pf;
-	bpf__ExecuteUbergraph_weapon__pf_1(61);
+	bpf__ExecuteUbergraph_weapon__pf_1(60);
 }
 void Aweapon_C__pf1418999182::bpf__DropComponent__pf(UPrimitiveComponent* bpp__component__pf)
 {
 	b0l__K2Node_Event_component__pf = bpp__component__pf;
-	bpf__ExecuteUbergraph_weapon__pf_2(52);
+	bpf__ExecuteUbergraph_weapon__pf_3(55);
 }
 void Aweapon_C__pf1418999182::bpf__PickupComponent__pf(USceneComponent* bpp__AttachTo__pf, UPrimitiveComponent* bpp__Component__pf)
 {
 	b0l__K2Node_Event_AttachTo__pf = bpp__AttachTo__pf;
 	b0l__K2Node_Event_Component2__pf = bpp__Component__pf;
-	bpf__ExecuteUbergraph_weapon__pf_3(34);
+	bpf__ExecuteUbergraph_weapon__pf_2(37);
 }
 void Aweapon_C__pf1418999182::bpf__ReceiveBeginPlay__pf()
 {
-	bpf__ExecuteUbergraph_weapon__pf_4(31);
+	bpf__ExecuteUbergraph_weapon__pf_4(34);
 }
 void Aweapon_C__pf1418999182::bpf__BndEvt__StaticMeshComponent_K2Node_ComponentBoundEvent_0_ComponentHitSignature__DelegateSignature__pf(UPrimitiveComponent* bpp__HitComponent__pf, AActor* bpp__OtherActor__pf, UPrimitiveComponent* bpp__OtherComp__pf, FVector bpp__NormalImpulse__pf, /*out*/ FHitResult const& bpp__Hit__pf__const)
 {
@@ -1007,16 +983,16 @@ void Aweapon_C__pf1418999182::bpf__BndEvt__StaticMeshComponent_K2Node_ComponentB
 	b0l__K2Node_ComponentBoundEvent_OtherComp__pf = bpp__OtherComp__pf;
 	b0l__K2Node_ComponentBoundEvent_NormalImpulse__pf = bpp__NormalImpulse__pf;
 	b0l__K2Node_ComponentBoundEvent_Hit__pf = bpp__Hit__pf;
-	bpf__ExecuteUbergraph_weapon__pf_0(19);
+	bpf__ExecuteUbergraph_weapon__pf_0(22);
 }
 void Aweapon_C__pf1418999182::bpf__Drop__pf()
 {
-	bpf__ExecuteUbergraph_weapon__pf_5(18);
+	bpf__ExecuteUbergraph_weapon__pf_5(21);
 }
 void Aweapon_C__pf1418999182::bpf__Pickup__pf(USceneComponent* bpp__AttachTo__pf)
 {
 	b0l__K2Node_Event_AttachTo2__pf = bpp__AttachTo__pf;
-	bpf__ExecuteUbergraph_weapon__pf_6(16);
+	bpf__ExecuteUbergraph_weapon__pf_6(20);
 }
 void Aweapon_C__pf1418999182::bpf__UserConstructionScript__pf()
 {
@@ -1114,7 +1090,9 @@ void Aweapon_C__pf1418999182::bpf__randomHitSound__pf(FVector bpp__impulse__pf, 
 void Aweapon_C__pf1418999182::bpf__shouldChop__pf(FVector bpp__impulse__pf, bool bpp__blocksWeapon__pf, /*out*/ bool& bpp__shouldchop__pf)
 {
 	float bpfv__CallFunc_VSize_ReturnValue__pf{};
+	FVector bpfv__CallFunc_GetComponentVelocity_ReturnValue__pf(EForceInit::ForceInit);
 	bool bpfv__CallFunc_Greater_FloatFloat_ReturnValue__pf{};
+	float bpfv__CallFunc_VSize_ReturnValue2__pf{};
 	bool bpfv__CallFunc_NearlyEqual_FloatFloat_ReturnValue__pf{};
 	bool bpfv__CallFunc_Greater_FloatFloat_ReturnValue2__pf{};
 	bool bpfv__CallFunc_BooleanOR_ReturnValue__pf{};
@@ -1129,9 +1107,14 @@ void Aweapon_C__pf1418999182::bpf__shouldChop__pf(FVector bpp__impulse__pf, bool
 		case 1:
 			{
 				bpfv__CallFunc_VSize_ReturnValue__pf = UKismetMathLibrary::VSize(bpp__impulse__pf);
+				if(IsValid(StaticMeshComponent))
+				{
+					bpfv__CallFunc_GetComponentVelocity_ReturnValue__pf = StaticMeshComponent->GetComponentVelocity();
+				}
 				bpfv__CallFunc_Greater_FloatFloat_ReturnValue__pf = UKismetMathLibrary::Greater_FloatFloat(bpfv__CallFunc_VSize_ReturnValue__pf, 20000.000000);
+				bpfv__CallFunc_VSize_ReturnValue2__pf = UKismetMathLibrary::VSize(bpfv__CallFunc_GetComponentVelocity_ReturnValue__pf);
 				bpfv__CallFunc_NearlyEqual_FloatFloat_ReturnValue__pf = UKismetMathLibrary::NearlyEqual_FloatFloat(bpfv__CallFunc_VSize_ReturnValue__pf, 10000.000000, 1.000000);
-				bpfv__CallFunc_Greater_FloatFloat_ReturnValue2__pf = UKismetMathLibrary::Greater_FloatFloat(bpv__speed__pf, bpv__chopThreshold__pf);
+				bpfv__CallFunc_Greater_FloatFloat_ReturnValue2__pf = UKismetMathLibrary::Greater_FloatFloat(bpfv__CallFunc_VSize_ReturnValue2__pf, bpv__chopThreshold__pf);
 				bpfv__CallFunc_BooleanOR_ReturnValue__pf = UKismetMathLibrary::BooleanOR(bpfv__CallFunc_NearlyEqual_FloatFloat_ReturnValue__pf, bpfv__CallFunc_Greater_FloatFloat_ReturnValue2__pf);
 				bpfv__CallFunc_BooleanOR_ReturnValue2__pf = UKismetMathLibrary::BooleanOR(bpfv__CallFunc_BooleanOR_ReturnValue__pf, bpfv__CallFunc_Greater_FloatFloat_ReturnValue__pf);
 				bpfv__CallFunc_BooleanAND_ReturnValue__pf = UKismetMathLibrary::BooleanAND(bpfv__CallFunc_BooleanOR_ReturnValue2__pf, bpv__canchop__pf);
@@ -1423,7 +1406,7 @@ void Aweapon_C__pf1418999182::bpf__randomSwooshSound__pf(float bpp__velocity__pf
 			}
 		case 3:
 			{
-				bpfv__CallFunc_MapRangeClamped_ReturnValue2__pf = UKismetMathLibrary::MapRangeClamped(bpp__velocity__pf, 50.000000, 1000.000000, 0.000000, 2.000000);
+				bpfv__CallFunc_MapRangeClamped_ReturnValue2__pf = UKismetMathLibrary::MapRangeClamped(bpp__velocity__pf, 100.000000, 2000.000000, 0.000000, 2.000000);
 				if(IsValid(bpfv__CallFunc_SpawnSoundAttached_ReturnValue__pf))
 				{
 					bpfv__CallFunc_SpawnSoundAttached_ReturnValue__pf->UAudioComponent::SetVolumeMultiplier(bpfv__CallFunc_MapRangeClamped_ReturnValue2__pf);
@@ -1431,7 +1414,7 @@ void Aweapon_C__pf1418999182::bpf__randomSwooshSound__pf(float bpp__velocity__pf
 			}
 		case 4:
 			{
-				bpfv__CallFunc_MapRangeClamped_ReturnValue__pf = UKismetMathLibrary::MapRangeClamped(bpp__velocity__pf, 50.000000, 1000.000000, 0.500000, 2.000000);
+				bpfv__CallFunc_MapRangeClamped_ReturnValue__pf = UKismetMathLibrary::MapRangeClamped(bpp__velocity__pf, 100.000000, 2000.000000, 0.500000, 2.000000);
 				if(IsValid(bpfv__CallFunc_SpawnSoundAttached_ReturnValue__pf))
 				{
 					bpfv__CallFunc_SpawnSoundAttached_ReturnValue__pf->UAudioComponent::SetPitchMultiplier(bpfv__CallFunc_MapRangeClamped_ReturnValue__pf);

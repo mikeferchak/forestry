@@ -162,14 +162,14 @@ public:
 	UFoliageInstancedStaticMeshComponent* b0l__K2Node_DynamicCast_AsFoliage_Instanced_Static_Mesh_Component__pf;
 	UPROPERTY(Transient, DuplicateTransient, meta=(OverrideNativeName="K2Node_DynamicCast_bSuccess3"))
 	bool b0l__K2Node_DynamicCast_bSuccess3__pf;
-	UPROPERTY(Transient, DuplicateTransient, meta=(OverrideNativeName="CallFunc_tryToChopFoliage_sound2"))
-	USoundBase* b0l__CallFunc_tryToChopFoliage_sound2__pf;
-	UPROPERTY(Transient, DuplicateTransient, meta=(OverrideNativeName="CallFunc_tryToChopFoliage_success2"))
-	bool b0l__CallFunc_tryToChopFoliage_success2__pf;
 	UPROPERTY(Transient, DuplicateTransient, meta=(OverrideNativeName="K2Node_DynamicCast_AsChoppable"))
 	AActor* b0l__K2Node_DynamicCast_AsChoppable__pf;
 	UPROPERTY(Transient, DuplicateTransient, meta=(OverrideNativeName="K2Node_DynamicCast_bSuccess4"))
 	bool b0l__K2Node_DynamicCast_bSuccess4__pf;
+	UPROPERTY(Transient, DuplicateTransient, meta=(OverrideNativeName="CallFunc_tryToChopFoliage_sound2"))
+	USoundBase* b0l__CallFunc_tryToChopFoliage_sound2__pf;
+	UPROPERTY(Transient, DuplicateTransient, meta=(OverrideNativeName="CallFunc_tryToChopFoliage_success2"))
+	bool b0l__CallFunc_tryToChopFoliage_success2__pf;
 	Aweapon_C__pf1418999182(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get());
 	virtual void PostLoadSubobjects(FObjectInstancingGraph* OuterInstanceGraph) override;
 	static void __CustomDynamicClassInitialization(UDynamicClass* InDynamicClass);
@@ -178,8 +178,8 @@ public:
 	UFUNCTION(meta=(OverrideNativeName="ExecuteUbergraph_weapon_0"))
 	void bpf__ExecuteUbergraph_weapon__pf_0(int32 bpp__EntryPoint__pf);
 	void bpf__ExecuteUbergraph_weapon__pf_1(int32 bpp__EntryPoint__pf);
-	UFUNCTION(meta=(OverrideNativeName="ExecuteUbergraph_weapon_2"))
 	void bpf__ExecuteUbergraph_weapon__pf_2(int32 bpp__EntryPoint__pf);
+	UFUNCTION(meta=(OverrideNativeName="ExecuteUbergraph_weapon_3"))
 	void bpf__ExecuteUbergraph_weapon__pf_3(int32 bpp__EntryPoint__pf);
 	void bpf__ExecuteUbergraph_weapon__pf_4(int32 bpp__EntryPoint__pf);
 	void bpf__ExecuteUbergraph_weapon__pf_5(int32 bpp__EntryPoint__pf);
