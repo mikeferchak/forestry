@@ -6,9 +6,9 @@ FText E__GripEnum__pf__GetUserFriendlyName(int32 InValue)
 	const auto EnumValue = static_cast<E__GripEnum__pf>(InValue);
 	switch(EnumValue)
 	{
-		case E__GripEnum__pf::NewEnumerator0: FTextStringHelper::ReadFromString(TEXT("NSLOCTEXT(\"[F05DC43E411A2A6ADED175BE3A5CFA63]\", \"C1E814D74F375D472AF233A13AA87BA0\", \"Open\")"), Text); break;
-		case E__GripEnum__pf::NewEnumerator1: FTextStringHelper::ReadFromString(TEXT("NSLOCTEXT(\"[F05DC43E411A2A6ADED175BE3A5CFA63]\", \"4BA5A23C4B23A57505C5FDA3894F1C2F\", \"CanGrab\")"), Text); break;
-		case E__GripEnum__pf::NewEnumerator2: FTextStringHelper::ReadFromString(TEXT("NSLOCTEXT(\"[F05DC43E411A2A6ADED175BE3A5CFA63]\", \"989BECC74BDB9B8BB0FAD1A36345AA43\", \"Grab\")"), Text); break;
+		case E__GripEnum__pf::NewEnumerator0: FTextStringHelper::ReadFromString(TEXT("NSLOCTEXT(\"[3D6BF0444CB698780C8902823EDEF48D]\", \"51F80C854E8294E760122C8941E7C50D\", \"Open\")"), Text); break;
+		case E__GripEnum__pf::NewEnumerator1: FTextStringHelper::ReadFromString(TEXT("NSLOCTEXT(\"[3D6BF0444CB698780C8902823EDEF48D]\", \"AFF9A10B443D8AC7C6B36380F70D0775\", \"CanGrab\")"), Text); break;
+		case E__GripEnum__pf::NewEnumerator2: FTextStringHelper::ReadFromString(TEXT("NSLOCTEXT(\"[3D6BF0444CB698780C8902823EDEF48D]\", \"C9DC01B44E110600CA4FB18E31B8ABBA\", \"Grab\")"), Text); break;
 		case E__GripEnum__pf::E__GripEnum__pf_MAX: FTextStringHelper::ReadFromString(TEXT(""), Text); break;
 		default: ensure(false);
 	};
