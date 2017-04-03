@@ -403,6 +403,8 @@ void Aweapon_C__pf1418999182::__CustomDynamicClassInitialization(UDynamicClass* 
 	// List of all referenced converted enums
 	InDynamicClass->ReferencedConvertedFields.Add(LoadObject<UEnum>(nullptr, TEXT("/Game/ProtoVRHand/Blueprints/Example/Enum_Grip.Enum_Grip")));
 	// List of all referenced converted classes
+	extern UClass* Z_Construct_UClass_Achoppable_C__pf1172009058();
+	InDynamicClass->ReferencedConvertedFields.Add(Z_Construct_UClass_Achoppable_C__pf1172009058());
 	extern UClass* Z_Construct_UClass_UPickupActorInterface_C();
 	InDynamicClass->ReferencedConvertedFields.Add(Z_Construct_UClass_UPickupActorInterface_C());
 	FConvertedBlueprintsDependencies::FillUsedAssetsInDynamicClass(InDynamicClass, &__StaticDependencies_DirectlyUsedAssets);
@@ -562,7 +564,7 @@ void Aweapon_C__pf1418999182::bpf__ExecuteUbergraph_weapon__pf_1(int32 bpp__Entr
 		case 14:
 			{
 				UGameplayStatics::BreakHitResult(b0l__CallFunc_LineTraceSingleForObjects_OutHit__pf, /*out*/ b0l__CallFunc_BreakHitResult_bBlockingHit__pf, /*out*/ b0l__CallFunc_BreakHitResult_bInitialOverlap__pf, /*out*/ b0l__CallFunc_BreakHitResult_Time__pf, /*out*/ b0l__CallFunc_BreakHitResult_Location__pf, /*out*/ b0l__CallFunc_BreakHitResult_ImpactPoint__pf, /*out*/ b0l__CallFunc_BreakHitResult_Normal__pf, /*out*/ b0l__CallFunc_BreakHitResult_ImpactNormal__pf, /*out*/ b0l__CallFunc_BreakHitResult_PhysMat__pf, /*out*/ b0l__CallFunc_BreakHitResult_HitActor__pf, /*out*/ b0l__CallFunc_BreakHitResult_HitComponent__pf, /*out*/ b0l__CallFunc_BreakHitResult_HitBoneName__pf, /*out*/ b0l__CallFunc_BreakHitResult_HitItem__pf, /*out*/ b0l__CallFunc_BreakHitResult_FaceIndex__pf, /*out*/ b0l__CallFunc_BreakHitResult_TraceStart__pf, /*out*/ b0l__CallFunc_BreakHitResult_TraceEnd__pf);
-				b0l__K2Node_DynamicCast_AsChoppable__pf = NoNativeCast<AActor>(CastChecked<UClass>(CastChecked<UDynamicClass>(Aweapon_C__pf1418999182::StaticClass())->UsedAssets[22], ECastCheckedType::NullAllowed), b0l__CallFunc_BreakHitResult_HitActor__pf);
+				b0l__K2Node_DynamicCast_AsChoppable__pf = Cast<Achoppable_C__pf1172009058>(b0l__CallFunc_BreakHitResult_HitActor__pf);
 				b0l__K2Node_DynamicCast_bSuccess4__pf = (b0l__K2Node_DynamicCast_AsChoppable__pf != nullptr);;
 				if (!b0l__K2Node_DynamicCast_bSuccess4__pf)
 				{
@@ -690,7 +692,7 @@ void Aweapon_C__pf1418999182::bpf__ExecuteUbergraph_weapon__pf_2(int32 bpp__Entr
 				{
 					bpfv__CallFunc_GetOwner_ReturnValue__pf = b0l__K2Node_DynamicCast_AsMotion_Controller_Component__pf->UActorComponent::GetOwner();
 				}
-				b0l__K2Node_DynamicCast_AsBP_Motion_Controller__pf = NoNativeCast<AActor>(CastChecked<UClass>(CastChecked<UDynamicClass>(Aweapon_C__pf1418999182::StaticClass())->UsedAssets[23], ECastCheckedType::NullAllowed), bpfv__CallFunc_GetOwner_ReturnValue__pf);
+				b0l__K2Node_DynamicCast_AsBP_Motion_Controller__pf = NoNativeCast<AActor>(CastChecked<UClass>(CastChecked<UDynamicClass>(Aweapon_C__pf1418999182::StaticClass())->UsedAssets[22], ECastCheckedType::NullAllowed), bpfv__CallFunc_GetOwner_ReturnValue__pf);
 				b0l__K2Node_DynamicCast_bSuccess2__pf = (b0l__K2Node_DynamicCast_AsBP_Motion_Controller__pf != nullptr);;
 				if (!b0l__K2Node_DynamicCast_bSuccess2__pf)
 				{
@@ -747,7 +749,7 @@ void Aweapon_C__pf1418999182::bpf__ExecuteUbergraph_weapon__pf_2(int32 bpp__Entr
 				{
 					bpfv__CallFunc_K2_GetComponentLocation_ReturnValue3__pf = b0l__K2Node_Event_AttachTo__pf->USceneComponent::K2_GetComponentLocation();
 				}
-				UGameplayStatics::PlaySoundAtLocation(this, CastChecked<USoundBase>(CastChecked<UDynamicClass>(Aweapon_C__pf1418999182::StaticClass())->UsedAssets[24], ECastCheckedType::NullAllowed), bpfv__CallFunc_K2_GetComponentLocation_ReturnValue3__pf, FRotator(0.000000,0.000000,0.000000), 0.500000, 1.000000, 0.000000, CastChecked<USoundAttenuation>(CastChecked<UDynamicClass>(Aweapon_C__pf1418999182::StaticClass())->UsedAssets[25], ECastCheckedType::NullAllowed), ((USoundConcurrency*)nullptr));
+				UGameplayStatics::PlaySoundAtLocation(this, CastChecked<USoundBase>(CastChecked<UDynamicClass>(Aweapon_C__pf1418999182::StaticClass())->UsedAssets[23], ECastCheckedType::NullAllowed), bpfv__CallFunc_K2_GetComponentLocation_ReturnValue3__pf, FRotator(0.000000,0.000000,0.000000), 0.500000, 1.000000, 0.000000, CastChecked<USoundAttenuation>(CastChecked<UDynamicClass>(Aweapon_C__pf1418999182::StaticClass())->UsedAssets[24], ECastCheckedType::NullAllowed), ((USoundConcurrency*)nullptr));
 			}
 		case 51:
 			{
@@ -1029,7 +1031,7 @@ void Aweapon_C__pf1418999182::bpf__randomChopSound__pf(FVector bpp__impulse__pf,
 	bpfv__CallFunc_RandomIntegerInRange_ReturnValue__pf = UKismetMathLibrary::RandomIntegerInRange(0, bpfv__CallFunc_Subtract_IntInt_ReturnValue__pf);
 	bpfv__CallFunc_FClamp_ReturnValue__pf = UKismetMathLibrary::FClamp(bpfv__CallFunc_Divide_FloatFloat_ReturnValue__pf, 0.000000, 5.000000);
 	FCustomThunkTemplates::Array_Get(bpv__chopSounds__pf, bpfv__CallFunc_RandomIntegerInRange_ReturnValue__pf, /*out*/ bpfv__CallFunc_Array_Get_Item__pf);
-	UGameplayStatics::PlaySoundAtLocation(this, bpfv__CallFunc_Array_Get_Item__pf, bpfv__CallFunc_BreakHitResult_ImpactPoint__pf, FRotator(0.000000,0.000000,0.000000), bpfv__CallFunc_FClamp_ReturnValue__pf, 1.000000, 0.000000, CastChecked<USoundAttenuation>(CastChecked<UDynamicClass>(Aweapon_C__pf1418999182::StaticClass())->UsedAssets[25], ECastCheckedType::NullAllowed), ((USoundConcurrency*)nullptr));
+	UGameplayStatics::PlaySoundAtLocation(this, bpfv__CallFunc_Array_Get_Item__pf, bpfv__CallFunc_BreakHitResult_ImpactPoint__pf, FRotator(0.000000,0.000000,0.000000), bpfv__CallFunc_FClamp_ReturnValue__pf, 1.000000, 0.000000, CastChecked<USoundAttenuation>(CastChecked<UDynamicClass>(Aweapon_C__pf1418999182::StaticClass())->UsedAssets[24], ECastCheckedType::NullAllowed), ((USoundConcurrency*)nullptr));
 	bpfv__CallFunc_Array_Length_ReturnValue__pf = FCustomThunkTemplates::Array_Length(bpv__chopSounds__pf);
 	bpfv__CallFunc_Subtract_IntInt_ReturnValue__pf = UKismetMathLibrary::Subtract_IntInt(bpfv__CallFunc_Array_Length_ReturnValue__pf, 1);
 	bpfv__CallFunc_RandomIntegerInRange_ReturnValue__pf = UKismetMathLibrary::RandomIntegerInRange(0, bpfv__CallFunc_Subtract_IntInt_ReturnValue__pf);
@@ -1075,7 +1077,7 @@ void Aweapon_C__pf1418999182::bpf__randomHitSound__pf(FVector bpp__impulse__pf, 
 				bpfv__CallFunc_RandomIntegerInRange_ReturnValue__pf = UKismetMathLibrary::RandomIntegerInRange(0, bpfv__CallFunc_Subtract_IntInt_ReturnValue__pf);
 				bpfv__CallFunc_FClamp_ReturnValue__pf = UKismetMathLibrary::FClamp(bpfv__CallFunc_Divide_FloatFloat_ReturnValue__pf, 0.000000, 5.000000);
 				FCustomThunkTemplates::Array_Get(bpv__hitSounds__pf, bpfv__CallFunc_RandomIntegerInRange_ReturnValue__pf, /*out*/ bpfv__CallFunc_Array_Get_Item__pf);
-				UGameplayStatics::PlaySoundAtLocation(this, bpfv__CallFunc_Array_Get_Item__pf, bpfv__CallFunc_BreakHitResult_ImpactPoint__pf, FRotator(0.000000,0.000000,0.000000), bpfv__CallFunc_FClamp_ReturnValue__pf, 1.000000, 0.000000, CastChecked<USoundAttenuation>(CastChecked<UDynamicClass>(Aweapon_C__pf1418999182::StaticClass())->UsedAssets[25], ECastCheckedType::NullAllowed), ((USoundConcurrency*)nullptr));
+				UGameplayStatics::PlaySoundAtLocation(this, bpfv__CallFunc_Array_Get_Item__pf, bpfv__CallFunc_BreakHitResult_ImpactPoint__pf, FRotator(0.000000,0.000000,0.000000), bpfv__CallFunc_FClamp_ReturnValue__pf, 1.000000, 0.000000, CastChecked<USoundAttenuation>(CastChecked<UDynamicClass>(Aweapon_C__pf1418999182::StaticClass())->UsedAssets[24], ECastCheckedType::NullAllowed), ((USoundConcurrency*)nullptr));
 			}
 		case 2:
 			{
@@ -1148,10 +1150,14 @@ void Aweapon_C__pf1418999182::bpf__tryToChopFoliage__pf(FHitResult bpp__hit__pf,
 	bool bpfv__Temp_bool_Variable2__pf{};
 	bool bpfv__Temp_bool_Variable3__pf{};
 	TEnumAsByte<ECollisionResponse> bpfv__CallFunc_GetCollisionResponseToChannel_ReturnValue__pf{};
+	AActor* bpfv__CallFunc_BeginDeferredActorSpawnFromClass_ReturnValue__pf{};
+	Achoppable_C__pf1172009058* bpfv__CallFunc_FinishSpawningActor_ReturnValue__pf{};
+	FTransform bpfv__CallFunc_GetInstanceTransform_OutInstanceTransform__pf{};
+	bool bpfv__CallFunc_GetInstanceTransform_ReturnValue__pf{};
+	bool bpfv__CallFunc_RemoveInstance_ReturnValue__pf{};
 	TEnumAsByte<ECollisionResponse> bpfv__Temp_byte_Variable__pf{};
 	bool bpfv__K2Node_Select_Default__pf{};
 	bool bpfv__CallFunc_shouldChop_shouldchop__pf{};
-	bool bpfv__CallFunc_RemoveInstance_ReturnValue__pf{};
 	bool bpfv__CallFunc_BreakHitResult_bBlockingHit__pf{};
 	bool bpfv__CallFunc_BreakHitResult_bInitialOverlap__pf{};
 	float bpfv__CallFunc_BreakHitResult_Time__pf{};
@@ -1167,14 +1173,11 @@ void Aweapon_C__pf1418999182::bpf__tryToChopFoliage__pf(FHitResult bpp__hit__pf,
 	int32 bpfv__CallFunc_BreakHitResult_FaceIndex__pf{};
 	FVector bpfv__CallFunc_BreakHitResult_TraceStart__pf(EForceInit::ForceInit);
 	FVector bpfv__CallFunc_BreakHitResult_TraceEnd__pf(EForceInit::ForceInit);
-	FTransform bpfv__CallFunc_GetInstanceTransform_OutInstanceTransform__pf{};
-	bool bpfv__CallFunc_GetInstanceTransform_ReturnValue__pf{};
-	AActor* bpfv__CallFunc_BeginDeferredActorSpawnFromClass_ReturnValue__pf{};
-	AActor* bpfv__CallFunc_FinishSpawningActor_ReturnValue__pf{};
 	UInstancedStaticMeshComponent* bpfv__K2Node_DynamicCast_AsInstanced_Static_Mesh_Component__pf{};
 	bool bpfv__K2Node_DynamicCast_bSuccess__pf{};
+	FTransform bpfv__instanceTransform__pf{};
 	bool bpfv__chopSuccess__pf{};
-	AActor* bpfv__newChoppableActor__pf{};
+	Achoppable_C__pf1172009058* bpfv__newChoppableActor__pf{};
 	int32 bpfv__hitItemIndex__pf{};
 	UInstancedStaticMeshComponent* bpfv__foliageInstancedComponent__pf{};
 	UPrimitiveComponent* bpfv___component__pf{};
@@ -1208,7 +1211,7 @@ void Aweapon_C__pf1418999182::bpf__tryToChopFoliage__pf(FHitResult bpp__hit__pf,
 				bpfv__K2Node_DynamicCast_bSuccess__pf = (bpfv__K2Node_DynamicCast_AsInstanced_Static_Mesh_Component__pf != nullptr);;
 				if (!bpfv__K2Node_DynamicCast_bSuccess__pf)
 				{
-					__CurrentState = 17;
+					__CurrentState = 18;
 					break;
 				}
 			}
@@ -1237,7 +1240,7 @@ void Aweapon_C__pf1418999182::bpf__tryToChopFoliage__pf(FHitResult bpp__hit__pf,
 			{
 				if (!bpfv__CallFunc_shouldChop_shouldchop__pf)
 				{
-					__CurrentState = 17;
+					__CurrentState = 18;
 					break;
 				}
 			}
@@ -1247,51 +1250,51 @@ void Aweapon_C__pf1418999182::bpf__tryToChopFoliage__pf(FHitResult bpp__hit__pf,
 				{
 					bpfv__CallFunc_GetInstanceTransform_ReturnValue__pf = bpfv__foliageInstancedComponent__pf->UInstancedStaticMeshComponent::GetInstanceTransform(bpfv__hitItemIndex__pf, /*out*/ bpfv__CallFunc_GetInstanceTransform_OutInstanceTransform__pf, true);
 				}
-				bpfv__CallFunc_BeginDeferredActorSpawnFromClass_ReturnValue__pf = UGameplayStatics::BeginDeferredActorSpawnFromClass(this, CastChecked<UClass>(CastChecked<UDynamicClass>(Aweapon_C__pf1418999182::StaticClass())->UsedAssets[22], ECastCheckedType::NullAllowed), bpfv__CallFunc_GetInstanceTransform_OutInstanceTransform__pf, ESpawnActorCollisionHandlingMethod::Undefined, ((AActor*)nullptr));
+				bpfv__instanceTransform__pf = bpfv__CallFunc_GetInstanceTransform_OutInstanceTransform__pf;
 			}
 		case 11:
-			{
-				if(IsValid(bpfv__foliageInstancedComponent__pf))
-				{
-					bpfv__CallFunc_GetInstanceTransform_ReturnValue__pf = bpfv__foliageInstancedComponent__pf->UInstancedStaticMeshComponent::GetInstanceTransform(bpfv__hitItemIndex__pf, /*out*/ bpfv__CallFunc_GetInstanceTransform_OutInstanceTransform__pf, true);
-				}
-				bpfv__CallFunc_FinishSpawningActor_ReturnValue__pf = UGameplayStatics::FinishSpawningActor(bpfv__CallFunc_BeginDeferredActorSpawnFromClass_ReturnValue__pf, bpfv__CallFunc_GetInstanceTransform_OutInstanceTransform__pf);
-			}
-		case 12:
-			{
-				bpfv__newChoppableActor__pf = bpfv__CallFunc_FinishSpawningActor_ReturnValue__pf;
-			}
-		case 13:
-			{
-				UStaticMesh*  __Local__12 = ((UStaticMesh*)nullptr);
-				if(IsValid(bpfv__newChoppableActor__pf))
-				{
-					FUnconvertedWrapper__Achoppable_C__pf1172009058(bpfv__newChoppableActor__pf).GetRef__mesh__pf() = ((IsValid(bpfv__foliageInstancedComponent__pf)) ? (bpfv__foliageInstancedComponent__pf->StaticMesh) : (__Local__12));
-				}
-			}
-		case 14:
-			{
-				if(IsValid(bpfv__newChoppableActor__pf))
-				{
-					FUnconvertedWrapper__Achoppable_C__pf1172009058(bpfv__newChoppableActor__pf).bpf__reinitChoppableObjectEvent__pf();
-				}
-			}
-		case 15:
 			{
 				if(IsValid(bpfv__foliageInstancedComponent__pf))
 				{
 					bpfv__CallFunc_RemoveInstance_ReturnValue__pf = bpfv__foliageInstancedComponent__pf->RemoveInstance(bpfv__hitItemIndex__pf);
 				}
 			}
+		case 12:
+			{
+				bpfv__CallFunc_BeginDeferredActorSpawnFromClass_ReturnValue__pf = UGameplayStatics::BeginDeferredActorSpawnFromClass(this, Achoppable_C__pf1172009058::StaticClass(), bpfv__instanceTransform__pf, ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn, ((AActor*)nullptr));
+			}
+		case 13:
+			{
+				bpfv__CallFunc_FinishSpawningActor_ReturnValue__pf = CastChecked<Achoppable_C__pf1172009058>(UGameplayStatics::FinishSpawningActor(bpfv__CallFunc_BeginDeferredActorSpawnFromClass_ReturnValue__pf, bpfv__instanceTransform__pf), ECastCheckedType::NullAllowed);
+			}
+		case 14:
+			{
+				bpfv__newChoppableActor__pf = bpfv__CallFunc_FinishSpawningActor_ReturnValue__pf;
+			}
+		case 15:
+			{
+				UStaticMesh*  __Local__12 = ((UStaticMesh*)nullptr);
+				if(IsValid(bpfv__newChoppableActor__pf))
+				{
+					bpfv__newChoppableActor__pf->bpv__mesh__pf = ((IsValid(bpfv__foliageInstancedComponent__pf)) ? (bpfv__foliageInstancedComponent__pf->StaticMesh) : (__Local__12));
+				}
+			}
 		case 16:
 			{
 				if(IsValid(bpfv__newChoppableActor__pf))
 				{
-					UProceduralMeshComponent*  __Local__13 = ((UProceduralMeshComponent*)nullptr);
-					FUnconvertedWrapper__Achoppable_C__pf1172009058(bpfv__newChoppableActor__pf).bpf__chopEvent__pf(bpfv___hit__pf, StaticMeshComponent, ((IsValid(bpfv__newChoppableActor__pf)) ? (FUnconvertedWrapper__Achoppable_C__pf1172009058(bpfv__newChoppableActor__pf).GetRef__ProceduralMesh__pf()) : (__Local__13)), FVector(0.000000,0.000000,0.000000));
+					bpfv__newChoppableActor__pf->bpf__reinitChoppableObjectEvent__pf();
 				}
 			}
 		case 17:
+			{
+				if(IsValid(bpfv__newChoppableActor__pf))
+				{
+					UProceduralMeshComponent*  __Local__13 = ((UProceduralMeshComponent*)nullptr);
+					bpfv__newChoppableActor__pf->bpf__chopEvent__pf(bpfv___hit__pf, StaticMeshComponent, ((IsValid(bpfv__newChoppableActor__pf)) ? (bpfv__newChoppableActor__pf->bpv__ProceduralMesh__pf) : (__Local__13)), FVector(0.000000,0.000000,0.000000));
+				}
+			}
+		case 18:
 			{
 				bpp__sound__pf = ((USoundBase*)nullptr);
 				bpp__success__pf = false;
@@ -1308,7 +1311,7 @@ void Aweapon_C__pf1418999182::bpf__tryToChopProcMesh__pf(AActor* bpp__actor__pf,
 	TEnumAsByte<ECollisionResponse> bpfv__Temp_byte_Variable__pf{};
 	UProceduralMeshComponent* bpfv__K2Node_DynamicCast_AsProcedural_Mesh_Component__pf{};
 	bool bpfv__K2Node_DynamicCast_bSuccess__pf{};
-	AActor* bpfv__K2Node_DynamicCast_AsChoppable__pf{};
+	Achoppable_C__pf1172009058* bpfv__K2Node_DynamicCast_AsChoppable__pf{};
 	bool bpfv__K2Node_DynamicCast_bSuccess2__pf{};
 	TEnumAsByte<ECollisionResponse> bpfv__CallFunc_GetCollisionResponseToChannel_ReturnValue__pf{};
 	bool bpfv__Temp_bool_Variable__pf{};
@@ -1353,7 +1356,7 @@ void Aweapon_C__pf1418999182::bpf__tryToChopProcMesh__pf(AActor* bpp__actor__pf,
 			}
 		case 4:
 			{
-				bpfv__K2Node_DynamicCast_AsChoppable__pf = NoNativeCast<AActor>(CastChecked<UClass>(CastChecked<UDynamicClass>(Aweapon_C__pf1418999182::StaticClass())->UsedAssets[22], ECastCheckedType::NullAllowed), bpp__actor__pf);
+				bpfv__K2Node_DynamicCast_AsChoppable__pf = Cast<Achoppable_C__pf1172009058>(bpp__actor__pf);
 				bpfv__K2Node_DynamicCast_bSuccess2__pf = (bpfv__K2Node_DynamicCast_AsChoppable__pf != nullptr);;
 				if (!bpfv__K2Node_DynamicCast_bSuccess2__pf)
 				{
@@ -1365,7 +1368,7 @@ void Aweapon_C__pf1418999182::bpf__tryToChopProcMesh__pf(AActor* bpp__actor__pf,
 			{
 				if(IsValid(bpfv__K2Node_DynamicCast_AsChoppable__pf))
 				{
-					FUnconvertedWrapper__Achoppable_C__pf1172009058(bpfv__K2Node_DynamicCast_AsChoppable__pf).bpf__chopEvent__pf(bpp__hit__pf, StaticMeshComponent, bpfv__K2Node_DynamicCast_AsProcedural_Mesh_Component__pf, bpp__inpulse__pf);
+					bpfv__K2Node_DynamicCast_AsChoppable__pf->bpf__chopEvent__pf(bpp__hit__pf, StaticMeshComponent, bpfv__K2Node_DynamicCast_AsProcedural_Mesh_Component__pf, bpp__inpulse__pf);
 				}
 				__CurrentState = -1;
 				break;
@@ -1401,7 +1404,7 @@ void Aweapon_C__pf1418999182::bpf__randomSwooshSound__pf(float bpp__velocity__pf
 			{
 				if(IsValid(bpfv__CallFunc_SpawnSoundAttached_ReturnValue__pf))
 				{
-					bpfv__CallFunc_SpawnSoundAttached_ReturnValue__pf->AttenuationSettings = CastChecked<USoundAttenuation>(CastChecked<UDynamicClass>(Aweapon_C__pf1418999182::StaticClass())->UsedAssets[25], ECastCheckedType::NullAllowed);
+					bpfv__CallFunc_SpawnSoundAttached_ReturnValue__pf->AttenuationSettings = CastChecked<USoundAttenuation>(CastChecked<UDynamicClass>(Aweapon_C__pf1418999182::StaticClass())->UsedAssets[24], ECastCheckedType::NullAllowed);
 				}
 			}
 		case 3:
@@ -1463,10 +1466,9 @@ void Aweapon_C__pf1418999182::__StaticDependencies_DirectlyUsedAssets(TArray<FBl
 		{19, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/woosh/swoosh_05.swoosh_05 
 		{20, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/woosh/swoosh_06.swoosh_06 
 		{21, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  BlueprintGeneratedClass /Game/Blueprints/spawners/axeSpawner.axeSpawner_C 
-		{22, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  BlueprintGeneratedClass /Game/Blueprints/choppableItems/choppable.choppable_C 
-		{23, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  BlueprintGeneratedClass /Game/VirtualRealityBP/Blueprints/BP_MotionController.BP_MotionController_C 
-		{24, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/holster/ui_wood_confirm.ui_wood_confirm 
-		{25, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundAttenuation /Game/audio/chopEffectAttenuation.chopEffectAttenuation 
+		{22, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  BlueprintGeneratedClass /Game/VirtualRealityBP/Blueprints/BP_MotionController.BP_MotionController_C 
+		{23, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/holster/ui_wood_confirm.ui_wood_confirm 
+		{24, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundAttenuation /Game/audio/chopEffectAttenuation.chopEffectAttenuation 
 	};
 	for(const FCompactBlueprintDependencyData CompactData : LocCompactBlueprintDependencyData)
 	{
@@ -1482,9 +1484,15 @@ void Aweapon_C__pf1418999182::__StaticDependenciesAssets(TArray<FBlueprintDepend
 	__StaticDependencies_DirectlyUsedAssets(AssetsToLoad);
 	const FCompactBlueprintDependencyData LocCompactBlueprintDependencyData[] =
 	{
-		{26, FBlueprintDependencyType(true, false, false, false), FBlueprintDependencyType(false, false, false, false)},  //  BlueprintGeneratedClass /Game/VirtualRealityBP/Blueprints/PickupActorInterface.PickupActorInterface_C 
-		{27, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  BlueprintGeneratedClass /Game/Blueprints/spawners/holsterSpawner.holsterSpawner_C 
-		{28, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  UserDefinedEnum /Game/ProtoVRHand/Blueprints/Example/Enum_Grip.Enum_Grip 
+		{25, FBlueprintDependencyType(true, false, false, false), FBlueprintDependencyType(false, false, false, false)},  //  BlueprintGeneratedClass /Game/VirtualRealityBP/Blueprints/PickupActorInterface.PickupActorInterface_C 
+		{26, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  StaticMesh /Game/props/log/log.log 
+		{27, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  ParticleSystem /Game/particles/woodchipParticle.woodchipParticle 
+		{28, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/freeze/ui_casual_pops_back.ui_casual_pops_back 
+		{29, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundConcurrency /Game/audio/chopConcurrency.chopConcurrency 
+		{30, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/thump/wood_thump_low.wood_thump_low 
+		{31, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  BlueprintGeneratedClass /Game/Blueprints/spawners/holsterSpawner.holsterSpawner_C 
+		{32, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  BlueprintGeneratedClass /Game/Blueprints/choppableItems/choppable.choppable_C 
+		{33, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  UserDefinedEnum /Game/ProtoVRHand/Blueprints/Example/Enum_Grip.Enum_Grip 
 	};
 	for(const FCompactBlueprintDependencyData CompactData : LocCompactBlueprintDependencyData)
 	{

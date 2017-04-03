@@ -19,6 +19,7 @@
 #include "Runtime/Engine/Classes/Components/SceneComponent.h"
 #include "Runtime/Engine/Classes/Components/SplineMeshComponent.h"
 #include "Runtime/Engine/Classes/Components/PrimitiveComponent.h"
+#include "choppable__pf1172009058.h"
 struct FUnconvertedWrapper__ABP_MotionController_C__pf563933975 : public FUnconvertedWrapper<AActor>
 {
 	FUnconvertedWrapper__ABP_MotionController_C__pf563933975(const AActor* __InObject) : FUnconvertedWrapper<AActor>(__InObject){}
@@ -442,13 +443,13 @@ struct FUnconvertedWrapper__ABP_MotionController_C__pf563933975 : public FUnconv
 		}
 		return *(__Property->ContainerPtrToValuePtr<UPrimitiveComponent* >(__Object));
 	}
-	FORCENOINLINE void bpf__getAttachedChoppable__pf(/*out*/ AActor*& bpp__AsChoppable__pf)
+	FORCENOINLINE void bpf__getAttachedChoppable__pf(/*out*/ Achoppable_C__pf1172009058*& bpp__AsChoppable__pf)
 	{
 		static const FName __FunctionName(TEXT("getAttachedChoppable"));
 		UFunction* __Function = __Object->FindFunctionChecked(__FunctionName);
 		struct bpf__getAttachedChoppable__pf_Parameters
 		{
-			AActor* bpp__AsChoppable__pf_;
+			Achoppable_C__pf1172009058* bpp__AsChoppable__pf_;
 		};
 		bpf__getAttachedChoppable__pf_Parameters __Parameters { bpp__AsChoppable__pf };
 		__Object->ProcessEvent(__Function, &__Parameters);
@@ -595,13 +596,13 @@ struct FUnconvertedWrapper__ABP_MotionController_C__pf563933975 : public FUnconv
 		bpf__RumbleController__pf_Parameters __Parameters { bpp__Intensity__pf };
 		__Object->ProcessEvent(__Function, &__Parameters);
 	}
-	FORCENOINLINE void bpf__freezeComponentInController__pf(AActor* bpp__choppableComponent__pf)
+	FORCENOINLINE void bpf__freezeComponentInController__pf(Achoppable_C__pf1172009058* bpp__choppableComponent__pf)
 	{
 		static const FName __FunctionName(TEXT("freezeComponentInController"));
 		UFunction* __Function = __Object->FindFunctionChecked(__FunctionName);
 		struct bpf__freezeComponentInController__pf_Parameters
 		{
-			AActor* bpp__choppableComponent__pf_;
+			Achoppable_C__pf1172009058* bpp__choppableComponent__pf_;
 		};
 		bpf__freezeComponentInController__pf_Parameters __Parameters { bpp__choppableComponent__pf };
 		__Object->ProcessEvent(__Function, &__Parameters);

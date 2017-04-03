@@ -13,6 +13,7 @@ class UArrowComponent;
 class UClass;
 class UPhysicalMaterial;
 class UFoliageInstancedStaticMeshComponent;
+class Achoppable_C__pf1172009058;
 class UProceduralMeshComponent;
 #include "weapon__pf1418999182.generated.h"
 UCLASS(config=Engine, Blueprintable, BlueprintType, meta=(ReplaceConverted="/Game/Blueprints/weapons/weapon.weapon_C,/Game/Blueprints/axe.axe_C", OverrideNativeName="weapon_C"))
@@ -163,7 +164,7 @@ public:
 	UPROPERTY(Transient, DuplicateTransient, meta=(OverrideNativeName="K2Node_DynamicCast_bSuccess3"))
 	bool b0l__K2Node_DynamicCast_bSuccess3__pf;
 	UPROPERTY(Transient, DuplicateTransient, meta=(OverrideNativeName="K2Node_DynamicCast_AsChoppable"))
-	AActor* b0l__K2Node_DynamicCast_AsChoppable__pf;
+	Achoppable_C__pf1172009058* b0l__K2Node_DynamicCast_AsChoppable__pf;
 	UPROPERTY(Transient, DuplicateTransient, meta=(OverrideNativeName="K2Node_DynamicCast_bSuccess4"))
 	bool b0l__K2Node_DynamicCast_bSuccess4__pf;
 	UPROPERTY(Transient, DuplicateTransient, meta=(OverrideNativeName="CallFunc_tryToChopFoliage_sound2"))
