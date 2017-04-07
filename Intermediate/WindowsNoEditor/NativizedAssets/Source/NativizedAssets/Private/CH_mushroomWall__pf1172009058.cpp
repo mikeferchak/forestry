@@ -255,7 +255,7 @@ void ACH_mushroomWall_C__pf1172009058::__StaticDependencies_DirectlyUsedAssets(T
 {
 	const FCompactBlueprintDependencyData LocCompactBlueprintDependencyData[] =
 	{
-		{72, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  StaticMesh /Game/props/mushrooms/mushroomWall/mushroomWall.mushroomWall 
+		{73, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  StaticMesh /Game/props/mushrooms/mushroomWall/mushroomWall.mushroomWall 
 	};
 	for(const FCompactBlueprintDependencyData CompactData : LocCompactBlueprintDependencyData)
 	{

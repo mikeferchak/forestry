@@ -312,10 +312,10 @@ Aweapon_C__pf1418999182::Aweapon_C__pf1418999182(const FObjectInitializer& Objec
 	bpv__grabDirection__pf = CreateDefaultSubobject<UArrowComponent>(TEXT("grabDirection"));
 	bpv__collisionLineStart__pf->CreationMethod = EComponentCreationMethod::Native;
 	bpv__collisionLineStart__pf->AttachToComponent(__Local__0, FAttachmentTransformRules::KeepRelativeTransform );
-	bpv__collisionLineStart__pf->RelativeLocation = FVector(0.000000, 0.500000, 53.000000);
+	bpv__collisionLineStart__pf->RelativeLocation = FVector(12.000000, 0.500000, 47.000000);
 	bpv__collisionLineEnd__pf->CreationMethod = EComponentCreationMethod::Native;
 	bpv__collisionLineEnd__pf->AttachToComponent(__Local__0, FAttachmentTransformRules::KeepRelativeTransform );
-	bpv__collisionLineEnd__pf->RelativeLocation = FVector(12.000000, 0.500000, 53.000000);
+	bpv__collisionLineEnd__pf->RelativeLocation = FVector(12.000000, 0.500000, 57.000000);
 	bpv__grabDirection__pf->CreationMethod = EComponentCreationMethod::Native;
 	bpv__grabDirection__pf->AttachToComponent(__Local__0, FAttachmentTransformRules::KeepRelativeTransform );
 	bpv__grabDirection__pf->ArrowSize = 0.500000f;

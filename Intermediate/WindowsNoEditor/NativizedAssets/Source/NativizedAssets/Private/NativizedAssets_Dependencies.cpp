@@ -80,8 +80,8 @@ namespace
 	FBlueprintDependencyObjectRef(TEXT("/Game/props/rockFormationOne"), TEXT("M_rockFormation"), TEXT("M_rockFormation"), TEXT("/Script/Engine"), TEXT("MaterialInstanceConstant")),
 	FBlueprintDependencyObjectRef(TEXT("/Game/props/mushrooms/mushroom4v1"), TEXT("mushroom4v1"), TEXT("mushroom4v1"), TEXT("/Script/Engine"), TEXT("StaticMesh")),
 	FBlueprintDependencyObjectRef(TEXT("/Game/props/mushrooms/mushroom4v3"), TEXT("mushroom4v3"), TEXT("mushroom4v3"), TEXT("/Script/Engine"), TEXT("StaticMesh")),
-	FBlueprintDependencyObjectRef(TEXT("/Game/props/mushrooms/mushroomWall"), TEXT("mushroomWall"), TEXT("mushroomWall"), TEXT("/Script/Engine"), TEXT("StaticMesh")),
 	FBlueprintDependencyObjectRef(TEXT("/Game/props/mushrooms/mushroomThreeSingle"), TEXT("mushroomThreeSingle"), TEXT("mushroomThreeSingle"), TEXT("/Script/Engine"), TEXT("StaticMesh")),
+	FBlueprintDependencyObjectRef(TEXT("/Game/props/mushrooms/mushroomWall"), TEXT("mushroomWall"), TEXT("mushroomWall"), TEXT("/Script/Engine"), TEXT("StaticMesh")),
 	FBlueprintDependencyObjectRef(TEXT("/Game/props/boulder"), TEXT("SM_boulder"), TEXT("SM_boulder"), TEXT("/Script/Engine"), TEXT("StaticMesh")),
 	};
 }
