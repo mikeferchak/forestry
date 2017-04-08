@@ -204,18 +204,19 @@
 #include "Runtime/Engine/Classes/Engine/InheritableComponentHandler.h"
 #include "ProceduralMeshComponent.h"
 #include "WT_master__pf4242708525.h"
+#include "choppableHitMass__pf1172009058.h"
 #include "KismetProceduralMeshLibrary.h"
 #include "BP_MotionController__pf563933975.h"
 #include "Runtime/HeadMountedDisplay/Public/MotionControllerComponent.h"
 #include "Runtime/HeadMountedDisplay/Public/IMotionController.h"
-#include "Runtime/Engine/Classes/Kismet/KismetArrayLibrary.h"
 #include "Runtime/Engine/Classes/Kismet/KismetMathLibrary.h"
+#include "Runtime/Engine/Classes/Kismet/KismetArrayLibrary.h"
+#include "Runtime/Engine/Classes/Kismet/KismetSystemLibrary.h"
 #include "Runtime/Engine/Classes/Kismet/GameplayStatics.h"
 #include "Runtime/Engine/Classes/Sound/ReverbEffect.h"
 #include "Runtime/Engine/Classes/Engine/Blueprint.h"
 #include "Runtime/Engine/Classes/Engine/BlueprintCore.h"
 #include "Runtime/Engine/Classes/Kismet/GameplayStaticsTypes.h"
-#include "Runtime/Engine/Classes/Kismet/KismetSystemLibrary.h"
 #include "Runtime/Engine/Classes/GameFramework/SaveGame.h"
 #include "Runtime/Engine/Classes/Engine/GameInstance.h"
 #include "Runtime/Engine/Classes/GameFramework/OnlineSession.h"
@@ -250,6 +251,8 @@
 #include "Runtime/Engine/Classes/Components/DecalComponent.h"
 #include "Enum_Grip__pf3811345418.h"
 #include "Runtime/Engine/Classes/Components/SplineMeshComponent.h"
+#include "Runtime/Engine/Classes/Components/ForceFeedbackComponent.h"
+#include "Runtime/Engine/Classes/GameFramework/ForceFeedbackAttenuation.h"
 #include "Runtime/Engine/Classes/Engine/BlueprintGeneratedClass.h"
 #include "PickupActorInterface__pf563933975.h"
 
@@ -304,6 +307,7 @@ void AWT_master_C__pf4242708525::__CustomDynamicClassInitialization(UDynamicClas
 	ensure(nullptr == InDynamicClass->AnimClassImplementation);
 	InDynamicClass->AssembleReferenceTokenStream();
 	// List of all referenced converted enums
+	InDynamicClass->ReferencedConvertedFields.Add(LoadObject<UEnum>(nullptr, TEXT("/Game/Blueprints/choppableItems/choppableHitMass.choppableHitMass")));
 	InDynamicClass->ReferencedConvertedFields.Add(LoadObject<UEnum>(nullptr, TEXT("/Game/ProtoVRHand/Blueprints/Example/Enum_Grip.Enum_Grip")));
 	// List of all referenced converted classes
 	extern UClass* Z_Construct_UClass_Achoppable_C__pf1172009058();
@@ -408,9 +412,9 @@ void AWT_master_C__pf4242708525::__StaticDependencies_DirectlyUsedAssets(TArray<
 {
 	const FCompactBlueprintDependencyData LocCompactBlueprintDependencyData[] =
 	{
-		{65, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundAttenuation /Game/audio/walkieTalkie/walkieTalkieAttenuation.walkieTalkieAttenuation 
-		{66, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/soundtrack/04_Hard_Time_Killin__Floor_Blues_mp3.04_Hard_Time_Killin__Floor_Blues_mp3 
-		{67, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  StaticMesh /Game/props/walkieTalkie/SM_walkieTalkie.SM_walkieTalkie 
+		{82, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundAttenuation /Game/audio/walkieTalkie/walkieTalkieAttenuation.walkieTalkieAttenuation 
+		{83, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/soundtrack/04_Hard_Time_Killin__Floor_Blues_mp3.04_Hard_Time_Killin__Floor_Blues_mp3 
+		{84, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  StaticMesh /Game/props/walkieTalkie/SM_walkieTalkie.SM_walkieTalkie 
 	};
 	for(const FCompactBlueprintDependencyData CompactData : LocCompactBlueprintDependencyData)
 	{
@@ -426,14 +430,15 @@ void AWT_master_C__pf4242708525::__StaticDependenciesAssets(TArray<FBlueprintDep
 	__StaticDependencies_DirectlyUsedAssets(AssetsToLoad);
 	const FCompactBlueprintDependencyData LocCompactBlueprintDependencyData[] =
 	{
-		{32, FBlueprintDependencyType(true, false, false, false), FBlueprintDependencyType(false, false, false, false)},  //  BlueprintGeneratedClass /Game/Blueprints/choppableItems/choppable.choppable_C 
+		{48, FBlueprintDependencyType(true, false, false, false), FBlueprintDependencyType(false, false, false, false)},  //  BlueprintGeneratedClass /Game/Blueprints/choppableItems/choppable.choppable_C 
 		{26, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  StaticMesh /Game/props/log/log.log 
 		{22, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  BlueprintGeneratedClass /Game/VirtualRealityBP/Blueprints/BP_MotionController.BP_MotionController_C 
 		{27, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  ParticleSystem /Game/particles/woodchipParticle.woodchipParticle 
 		{24, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundAttenuation /Game/audio/chopEffectAttenuation.chopEffectAttenuation 
 		{28, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/freeze/ui_casual_pops_back.ui_casual_pops_back 
-		{29, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundConcurrency /Game/audio/chopConcurrency.chopConcurrency 
-		{30, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/thump/wood_thump_low.wood_thump_low 
+		{29, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  PhysicalMaterial /Game/materials/physicalMat/bigTreeLeafPhysicalMat.bigTreeLeafPhysicalMat 
+		{30, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  PhysicalMaterial /Game/materials/physicalMat/bigTreeTrunkPhysicalMat.bigTreeTrunkPhysicalMat 
+		{31, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/thump/wood_thump_low.wood_thump_low 
 		{2, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/chop/wc_1.wc_1 
 		{3, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/chop/wc_2.wc_2 
 		{4, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/chop/wc_3.wc_3 
@@ -442,8 +447,24 @@ void AWT_master_C__pf4242708525::__StaticDependenciesAssets(TArray<FBlueprintDep
 		{7, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/chop/wc_6.wc_6 
 		{8, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/chop/wc_7.wc_7 
 		{9, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/chop/wc_8.wc_8 
+		{32, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/branchFallDebris/WOOD_Branch_Fall_Debris_SBPWD1_064.WOOD_Branch_Fall_Debris_SBPWD1_064 
+		{33, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/branchFallDebris/WOOD_Branch_Fall_Debris_SBPWD1_065.WOOD_Branch_Fall_Debris_SBPWD1_065 
+		{34, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/branchFallDebris/WOOD_Branch_Fall_Debris_SBPWD1_066.WOOD_Branch_Fall_Debris_SBPWD1_066 
+		{35, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/branchFallDebris/WOOD_Branch_Fall_Debris_SBPWD1_067.WOOD_Branch_Fall_Debris_SBPWD1_067 
+		{36, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/branchFallDebris/WOOD_Branch_Fall_Debris_SBPWD1_068.WOOD_Branch_Fall_Debris_SBPWD1_068 
+		{37, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/branchFallDebris/WOOD_Branch_Fall_Debris_SBPWD1_069.WOOD_Branch_Fall_Debris_SBPWD1_069 
+		{38, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/branchFallDebris/WOOD_Branch_Fall_Debris_SBPWD1_070.WOOD_Branch_Fall_Debris_SBPWD1_070 
+		{39, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/branchFallDebris/WOOD_Branch_Fall_Debris_SBPWD1_071.WOOD_Branch_Fall_Debris_SBPWD1_071 
+		{40, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/branchFallDebris/WOOD_Branch_Fall_Debris_SBPWD1_072.WOOD_Branch_Fall_Debris_SBPWD1_072 
+		{41, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/branchFallDebris/WOOD_Branch_Fall_Debris_SBPWD1_073.WOOD_Branch_Fall_Debris_SBPWD1_073 
+		{42, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/logFall/WOOD_Impact_Log_SBPWD1_267.WOOD_Impact_Log_SBPWD1_267 
+		{43, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/logFall/WOOD_Impact_Log_SBPWD1_268.WOOD_Impact_Log_SBPWD1_268 
+		{44, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/logFall/WOOD_Impact_Log_SBPWD1_269.WOOD_Impact_Log_SBPWD1_269 
+		{45, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/logFall/WOOD_Impact_Log_SBPWD1_270.WOOD_Impact_Log_SBPWD1_270 
+		{46, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/logFall/WOOD_Impact_Log_SBPWD1_271.WOOD_Impact_Log_SBPWD1_271 
 		{25, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  BlueprintGeneratedClass /Game/VirtualRealityBP/Blueprints/PickupActorInterface.PickupActorInterface_C 
-		{33, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  UserDefinedEnum /Game/ProtoVRHand/Blueprints/Example/Enum_Grip.Enum_Grip 
+		{49, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  UserDefinedEnum /Game/Blueprints/choppableItems/choppableHitMass.choppableHitMass 
+		{50, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  UserDefinedEnum /Game/ProtoVRHand/Blueprints/Example/Enum_Grip.Enum_Grip 
 	};
 	for(const FCompactBlueprintDependencyData CompactData : LocCompactBlueprintDependencyData)
 	{

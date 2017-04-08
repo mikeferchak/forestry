@@ -256,6 +256,7 @@
 #include "Runtime/Engine/Classes/Sound/DialogueWave.h"
 #include "Runtime/Engine/Classes/Kismet/KismetMathLibrary.h"
 #include "Runtime/Engine/Classes/Kismet/KismetArrayLibrary.h"
+#include "choppableHitMass__pf1172009058.h"
 #include "KismetProceduralMeshLibrary.h"
 #include "Runtime/Engine/Classes/Components/DecalComponent.h"
 #include "Runtime/Engine/Classes/Components/ForceFeedbackComponent.h"
@@ -401,6 +402,7 @@ void Aweapon_C__pf1418999182::__CustomDynamicClassInitialization(UDynamicClass* 
 	ensure(nullptr == InDynamicClass->AnimClassImplementation);
 	InDynamicClass->AssembleReferenceTokenStream();
 	// List of all referenced converted enums
+	InDynamicClass->ReferencedConvertedFields.Add(LoadObject<UEnum>(nullptr, TEXT("/Game/Blueprints/choppableItems/choppableHitMass.choppableHitMass")));
 	InDynamicClass->ReferencedConvertedFields.Add(LoadObject<UEnum>(nullptr, TEXT("/Game/ProtoVRHand/Blueprints/Example/Enum_Grip.Enum_Grip")));
 	// List of all referenced converted classes
 	extern UClass* Z_Construct_UClass_Achoppable_C__pf1172009058();
@@ -1016,27 +1018,56 @@ void Aweapon_C__pf1418999182::bpf__randomChopSound__pf(FVector bpp__impulse__pf,
 	int32 bpfv__CallFunc_BreakHitResult_FaceIndex__pf{};
 	FVector bpfv__CallFunc_BreakHitResult_TraceStart__pf(EForceInit::ForceInit);
 	FVector bpfv__CallFunc_BreakHitResult_TraceEnd__pf(EForceInit::ForceInit);
-	int32 bpfv__CallFunc_Array_Length_ReturnValue__pf{};
 	float bpfv__CallFunc_VSize_ReturnValue__pf{};
+	FVector bpfv__CallFunc_GetVelocity_ReturnValue__pf(EForceInit::ForceInit);
+	float bpfv__CallFunc_MapRangeClamped_ReturnValue__pf{};
+	float bpfv__CallFunc_VSize_ReturnValue2__pf{};
+	bool bpfv__CallFunc_GreaterEqual_FloatFloat_ReturnValue__pf{};
+	int32 bpfv__CallFunc_Array_Length_ReturnValue__pf{};
 	int32 bpfv__CallFunc_Subtract_IntInt_ReturnValue__pf{};
-	float bpfv__CallFunc_Divide_FloatFloat_ReturnValue__pf{};
 	int32 bpfv__CallFunc_RandomIntegerInRange_ReturnValue__pf{};
-	float bpfv__CallFunc_FClamp_ReturnValue__pf{};
 	USoundBase* bpfv__CallFunc_Array_Get_Item__pf{};
-	UGameplayStatics::BreakHitResult(bpp__hit__pf, /*out*/ bpfv__CallFunc_BreakHitResult_bBlockingHit__pf, /*out*/ bpfv__CallFunc_BreakHitResult_bInitialOverlap__pf, /*out*/ bpfv__CallFunc_BreakHitResult_Time__pf, /*out*/ bpfv__CallFunc_BreakHitResult_Location__pf, /*out*/ bpfv__CallFunc_BreakHitResult_ImpactPoint__pf, /*out*/ bpfv__CallFunc_BreakHitResult_Normal__pf, /*out*/ bpfv__CallFunc_BreakHitResult_ImpactNormal__pf, /*out*/ bpfv__CallFunc_BreakHitResult_PhysMat__pf, /*out*/ bpfv__CallFunc_BreakHitResult_HitActor__pf, /*out*/ bpfv__CallFunc_BreakHitResult_HitComponent__pf, /*out*/ bpfv__CallFunc_BreakHitResult_HitBoneName__pf, /*out*/ bpfv__CallFunc_BreakHitResult_HitItem__pf, /*out*/ bpfv__CallFunc_BreakHitResult_FaceIndex__pf, /*out*/ bpfv__CallFunc_BreakHitResult_TraceStart__pf, /*out*/ bpfv__CallFunc_BreakHitResult_TraceEnd__pf);
-	bpfv__CallFunc_Array_Length_ReturnValue__pf = FCustomThunkTemplates::Array_Length(bpv__chopSounds__pf);
-	bpfv__CallFunc_VSize_ReturnValue__pf = UKismetMathLibrary::VSize(bpp__impulse__pf);
-	bpfv__CallFunc_Subtract_IntInt_ReturnValue__pf = UKismetMathLibrary::Subtract_IntInt(bpfv__CallFunc_Array_Length_ReturnValue__pf, 1);
-	bpfv__CallFunc_Divide_FloatFloat_ReturnValue__pf = FCustomThunkTemplates::Divide_FloatFloat(bpfv__CallFunc_VSize_ReturnValue__pf, 2500.000000);
-	bpfv__CallFunc_RandomIntegerInRange_ReturnValue__pf = UKismetMathLibrary::RandomIntegerInRange(0, bpfv__CallFunc_Subtract_IntInt_ReturnValue__pf);
-	bpfv__CallFunc_FClamp_ReturnValue__pf = UKismetMathLibrary::FClamp(bpfv__CallFunc_Divide_FloatFloat_ReturnValue__pf, 0.000000, 5.000000);
-	FCustomThunkTemplates::Array_Get(bpv__chopSounds__pf, bpfv__CallFunc_RandomIntegerInRange_ReturnValue__pf, /*out*/ bpfv__CallFunc_Array_Get_Item__pf);
-	UGameplayStatics::PlaySoundAtLocation(this, bpfv__CallFunc_Array_Get_Item__pf, bpfv__CallFunc_BreakHitResult_ImpactPoint__pf, FRotator(0.000000,0.000000,0.000000), bpfv__CallFunc_FClamp_ReturnValue__pf, 1.000000, 0.000000, CastChecked<USoundAttenuation>(CastChecked<UDynamicClass>(Aweapon_C__pf1418999182::StaticClass())->UsedAssets[24], ECastCheckedType::NullAllowed), ((USoundConcurrency*)nullptr));
-	bpfv__CallFunc_Array_Length_ReturnValue__pf = FCustomThunkTemplates::Array_Length(bpv__chopSounds__pf);
-	bpfv__CallFunc_Subtract_IntInt_ReturnValue__pf = UKismetMathLibrary::Subtract_IntInt(bpfv__CallFunc_Array_Length_ReturnValue__pf, 1);
-	bpfv__CallFunc_RandomIntegerInRange_ReturnValue__pf = UKismetMathLibrary::RandomIntegerInRange(0, bpfv__CallFunc_Subtract_IntInt_ReturnValue__pf);
-	FCustomThunkTemplates::Array_Get(bpv__chopSounds__pf, bpfv__CallFunc_RandomIntegerInRange_ReturnValue__pf, /*out*/ bpfv__CallFunc_Array_Get_Item__pf);
-	bpp__sound__pf = bpfv__CallFunc_Array_Get_Item__pf;
+	int32 __CurrentState = 1;
+	do
+	{
+		switch( __CurrentState )
+		{
+		case 1:
+			{
+				bpfv__CallFunc_GetVelocity_ReturnValue__pf = GetVelocity();
+				bpfv__CallFunc_VSize_ReturnValue2__pf = UKismetMathLibrary::VSize(bpfv__CallFunc_GetVelocity_ReturnValue__pf);
+				bpfv__CallFunc_GreaterEqual_FloatFloat_ReturnValue__pf = UKismetMathLibrary::GreaterEqual_FloatFloat(bpfv__CallFunc_VSize_ReturnValue2__pf, bpv__chopThreshold__pf);
+				if (!bpfv__CallFunc_GreaterEqual_FloatFloat_ReturnValue__pf)
+				{
+					__CurrentState = 3;
+					break;
+				}
+			}
+		case 2:
+			{
+				UGameplayStatics::BreakHitResult(bpp__hit__pf, /*out*/ bpfv__CallFunc_BreakHitResult_bBlockingHit__pf, /*out*/ bpfv__CallFunc_BreakHitResult_bInitialOverlap__pf, /*out*/ bpfv__CallFunc_BreakHitResult_Time__pf, /*out*/ bpfv__CallFunc_BreakHitResult_Location__pf, /*out*/ bpfv__CallFunc_BreakHitResult_ImpactPoint__pf, /*out*/ bpfv__CallFunc_BreakHitResult_Normal__pf, /*out*/ bpfv__CallFunc_BreakHitResult_ImpactNormal__pf, /*out*/ bpfv__CallFunc_BreakHitResult_PhysMat__pf, /*out*/ bpfv__CallFunc_BreakHitResult_HitActor__pf, /*out*/ bpfv__CallFunc_BreakHitResult_HitComponent__pf, /*out*/ bpfv__CallFunc_BreakHitResult_HitBoneName__pf, /*out*/ bpfv__CallFunc_BreakHitResult_HitItem__pf, /*out*/ bpfv__CallFunc_BreakHitResult_FaceIndex__pf, /*out*/ bpfv__CallFunc_BreakHitResult_TraceStart__pf, /*out*/ bpfv__CallFunc_BreakHitResult_TraceEnd__pf);
+				bpfv__CallFunc_VSize_ReturnValue__pf = UKismetMathLibrary::VSize(bpp__impulse__pf);
+				bpfv__CallFunc_MapRangeClamped_ReturnValue__pf = UKismetMathLibrary::MapRangeClamped(bpfv__CallFunc_VSize_ReturnValue__pf, 0.000000, 5000.000000, 0.000000, 2.000000);
+				bpfv__CallFunc_Array_Length_ReturnValue__pf = FCustomThunkTemplates::Array_Length(bpv__chopSounds__pf);
+				bpfv__CallFunc_Subtract_IntInt_ReturnValue__pf = UKismetMathLibrary::Subtract_IntInt(bpfv__CallFunc_Array_Length_ReturnValue__pf, 1);
+				bpfv__CallFunc_RandomIntegerInRange_ReturnValue__pf = UKismetMathLibrary::RandomIntegerInRange(0, bpfv__CallFunc_Subtract_IntInt_ReturnValue__pf);
+				FCustomThunkTemplates::Array_Get(bpv__chopSounds__pf, bpfv__CallFunc_RandomIntegerInRange_ReturnValue__pf, /*out*/ bpfv__CallFunc_Array_Get_Item__pf);
+				UGameplayStatics::PlaySoundAtLocation(this, bpfv__CallFunc_Array_Get_Item__pf, bpfv__CallFunc_BreakHitResult_ImpactPoint__pf, FRotator(0.000000,0.000000,0.000000), bpfv__CallFunc_MapRangeClamped_ReturnValue__pf, 1.000000, 0.000000, CastChecked<USoundAttenuation>(CastChecked<UDynamicClass>(Aweapon_C__pf1418999182::StaticClass())->UsedAssets[24], ECastCheckedType::NullAllowed), ((USoundConcurrency*)nullptr));
+			}
+		case 3:
+			{
+				bpfv__CallFunc_Array_Length_ReturnValue__pf = FCustomThunkTemplates::Array_Length(bpv__chopSounds__pf);
+				bpfv__CallFunc_Subtract_IntInt_ReturnValue__pf = UKismetMathLibrary::Subtract_IntInt(bpfv__CallFunc_Array_Length_ReturnValue__pf, 1);
+				bpfv__CallFunc_RandomIntegerInRange_ReturnValue__pf = UKismetMathLibrary::RandomIntegerInRange(0, bpfv__CallFunc_Subtract_IntInt_ReturnValue__pf);
+				FCustomThunkTemplates::Array_Get(bpv__chopSounds__pf, bpfv__CallFunc_RandomIntegerInRange_ReturnValue__pf, /*out*/ bpfv__CallFunc_Array_Get_Item__pf);
+				bpp__sound__pf = bpfv__CallFunc_Array_Get_Item__pf;
+				__CurrentState = -1;
+				break;
+			}
+		default:
+			break;
+		}
+	} while( __CurrentState != -1 );
 }
 void Aweapon_C__pf1418999182::bpf__randomHitSound__pf(FVector bpp__impulse__pf, FHitResult bpp__hit__pf)
 {
@@ -1211,7 +1242,7 @@ void Aweapon_C__pf1418999182::bpf__tryToChopFoliage__pf(FHitResult bpp__hit__pf,
 				bpfv__K2Node_DynamicCast_bSuccess__pf = (bpfv__K2Node_DynamicCast_AsInstanced_Static_Mesh_Component__pf != nullptr);;
 				if (!bpfv__K2Node_DynamicCast_bSuccess__pf)
 				{
-					__CurrentState = 18;
+					__CurrentState = 21;
 					break;
 				}
 			}
@@ -1240,7 +1271,7 @@ void Aweapon_C__pf1418999182::bpf__tryToChopFoliage__pf(FHitResult bpp__hit__pf,
 			{
 				if (!bpfv__CallFunc_shouldChop_shouldchop__pf)
 				{
-					__CurrentState = 18;
+					__CurrentState = 21;
 					break;
 				}
 			}
@@ -1261,17 +1292,25 @@ void Aweapon_C__pf1418999182::bpf__tryToChopFoliage__pf(FHitResult bpp__hit__pf,
 			}
 		case 12:
 			{
-				bpfv__CallFunc_BeginDeferredActorSpawnFromClass_ReturnValue__pf = UGameplayStatics::BeginDeferredActorSpawnFromClass(this, Achoppable_C__pf1172009058::StaticClass(), bpfv__instanceTransform__pf, ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn, ((AActor*)nullptr));
+				if (!bpfv__CallFunc_RemoveInstance_ReturnValue__pf)
+				{
+					__CurrentState = 21;
+					break;
+				}
 			}
 		case 13:
 			{
-				bpfv__CallFunc_FinishSpawningActor_ReturnValue__pf = CastChecked<Achoppable_C__pf1172009058>(UGameplayStatics::FinishSpawningActor(bpfv__CallFunc_BeginDeferredActorSpawnFromClass_ReturnValue__pf, bpfv__instanceTransform__pf), ECastCheckedType::NullAllowed);
+				bpfv__CallFunc_BeginDeferredActorSpawnFromClass_ReturnValue__pf = UGameplayStatics::BeginDeferredActorSpawnFromClass(this, Achoppable_C__pf1172009058::StaticClass(), bpfv__instanceTransform__pf, ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn, ((AActor*)nullptr));
 			}
 		case 14:
 			{
-				bpfv__newChoppableActor__pf = bpfv__CallFunc_FinishSpawningActor_ReturnValue__pf;
+				bpfv__CallFunc_FinishSpawningActor_ReturnValue__pf = CastChecked<Achoppable_C__pf1172009058>(UGameplayStatics::FinishSpawningActor(bpfv__CallFunc_BeginDeferredActorSpawnFromClass_ReturnValue__pf, bpfv__instanceTransform__pf), ECastCheckedType::NullAllowed);
 			}
 		case 15:
+			{
+				bpfv__newChoppableActor__pf = bpfv__CallFunc_FinishSpawningActor_ReturnValue__pf;
+			}
+		case 16:
 			{
 				UStaticMesh*  __Local__12 = ((UStaticMesh*)nullptr);
 				if(IsValid(bpfv__newChoppableActor__pf))
@@ -1279,22 +1318,36 @@ void Aweapon_C__pf1418999182::bpf__tryToChopFoliage__pf(FHitResult bpp__hit__pf,
 					bpfv__newChoppableActor__pf->bpv__mesh__pf = ((IsValid(bpfv__foliageInstancedComponent__pf)) ? (bpfv__foliageInstancedComponent__pf->StaticMesh) : (__Local__12));
 				}
 			}
-		case 16:
+		case 17:
 			{
 				if(IsValid(bpfv__newChoppableActor__pf))
 				{
 					bpfv__newChoppableActor__pf->bpf__reinitChoppableObjectEvent__pf();
 				}
 			}
-		case 17:
+		case 18:
+			{
+				if(IsValid(bpfv__newChoppableActor__pf) && IsValid(bpfv__newChoppableActor__pf->bpv__ProceduralMesh__pf))
+				{
+					bpfv__newChoppableActor__pf->bpv__ProceduralMesh__pf->SetLinearDamping(0.300000);
+				}
+			}
+		case 19:
+			{
+				if(IsValid(bpfv__newChoppableActor__pf) && IsValid(bpfv__newChoppableActor__pf->bpv__ProceduralMesh__pf))
+				{
+					bpfv__newChoppableActor__pf->bpv__ProceduralMesh__pf->SetAngularDamping(0.300000);
+				}
+			}
+		case 20:
 			{
 				if(IsValid(bpfv__newChoppableActor__pf))
 				{
 					UProceduralMeshComponent*  __Local__13 = ((UProceduralMeshComponent*)nullptr);
-					bpfv__newChoppableActor__pf->bpf__chopEvent__pf(bpfv___hit__pf, StaticMeshComponent, ((IsValid(bpfv__newChoppableActor__pf)) ? (bpfv__newChoppableActor__pf->bpv__ProceduralMesh__pf) : (__Local__13)), FVector(0.000000,0.000000,0.000000));
+					bpfv__newChoppableActor__pf->bpf__chopEvent__pf(bpfv___hit__pf, StaticMeshComponent, ((IsValid(bpfv__newChoppableActor__pf)) ? (bpfv__newChoppableActor__pf->bpv__ProceduralMesh__pf) : (__Local__13)), bpfv___impulse__pf);
 				}
 			}
-		case 18:
+		case 21:
 			{
 				bpp__sound__pf = ((USoundBase*)nullptr);
 				bpp__success__pf = false;
@@ -1488,11 +1541,28 @@ void Aweapon_C__pf1418999182::__StaticDependenciesAssets(TArray<FBlueprintDepend
 		{26, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  StaticMesh /Game/props/log/log.log 
 		{27, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  ParticleSystem /Game/particles/woodchipParticle.woodchipParticle 
 		{28, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/freeze/ui_casual_pops_back.ui_casual_pops_back 
-		{29, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundConcurrency /Game/audio/chopConcurrency.chopConcurrency 
-		{30, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/thump/wood_thump_low.wood_thump_low 
-		{31, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  BlueprintGeneratedClass /Game/Blueprints/spawners/holsterSpawner.holsterSpawner_C 
-		{32, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  BlueprintGeneratedClass /Game/Blueprints/choppableItems/choppable.choppable_C 
-		{33, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  UserDefinedEnum /Game/ProtoVRHand/Blueprints/Example/Enum_Grip.Enum_Grip 
+		{29, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  PhysicalMaterial /Game/materials/physicalMat/bigTreeLeafPhysicalMat.bigTreeLeafPhysicalMat 
+		{30, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  PhysicalMaterial /Game/materials/physicalMat/bigTreeTrunkPhysicalMat.bigTreeTrunkPhysicalMat 
+		{31, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/thump/wood_thump_low.wood_thump_low 
+		{32, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/branchFallDebris/WOOD_Branch_Fall_Debris_SBPWD1_064.WOOD_Branch_Fall_Debris_SBPWD1_064 
+		{33, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/branchFallDebris/WOOD_Branch_Fall_Debris_SBPWD1_065.WOOD_Branch_Fall_Debris_SBPWD1_065 
+		{34, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/branchFallDebris/WOOD_Branch_Fall_Debris_SBPWD1_066.WOOD_Branch_Fall_Debris_SBPWD1_066 
+		{35, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/branchFallDebris/WOOD_Branch_Fall_Debris_SBPWD1_067.WOOD_Branch_Fall_Debris_SBPWD1_067 
+		{36, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/branchFallDebris/WOOD_Branch_Fall_Debris_SBPWD1_068.WOOD_Branch_Fall_Debris_SBPWD1_068 
+		{37, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/branchFallDebris/WOOD_Branch_Fall_Debris_SBPWD1_069.WOOD_Branch_Fall_Debris_SBPWD1_069 
+		{38, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/branchFallDebris/WOOD_Branch_Fall_Debris_SBPWD1_070.WOOD_Branch_Fall_Debris_SBPWD1_070 
+		{39, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/branchFallDebris/WOOD_Branch_Fall_Debris_SBPWD1_071.WOOD_Branch_Fall_Debris_SBPWD1_071 
+		{40, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/branchFallDebris/WOOD_Branch_Fall_Debris_SBPWD1_072.WOOD_Branch_Fall_Debris_SBPWD1_072 
+		{41, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/branchFallDebris/WOOD_Branch_Fall_Debris_SBPWD1_073.WOOD_Branch_Fall_Debris_SBPWD1_073 
+		{42, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/logFall/WOOD_Impact_Log_SBPWD1_267.WOOD_Impact_Log_SBPWD1_267 
+		{43, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/logFall/WOOD_Impact_Log_SBPWD1_268.WOOD_Impact_Log_SBPWD1_268 
+		{44, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/logFall/WOOD_Impact_Log_SBPWD1_269.WOOD_Impact_Log_SBPWD1_269 
+		{45, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/logFall/WOOD_Impact_Log_SBPWD1_270.WOOD_Impact_Log_SBPWD1_270 
+		{46, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  SoundWave /Game/audio/logFall/WOOD_Impact_Log_SBPWD1_271.WOOD_Impact_Log_SBPWD1_271 
+		{47, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  BlueprintGeneratedClass /Game/Blueprints/spawners/holsterSpawner.holsterSpawner_C 
+		{48, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  BlueprintGeneratedClass /Game/Blueprints/choppableItems/choppable.choppable_C 
+		{49, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  UserDefinedEnum /Game/Blueprints/choppableItems/choppableHitMass.choppableHitMass 
+		{50, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //  UserDefinedEnum /Game/ProtoVRHand/Blueprints/Example/Enum_Grip.Enum_Grip 
 	};
 	for(const FCompactBlueprintDependencyData CompactData : LocCompactBlueprintDependencyData)
 	{

@@ -37,10 +37,27 @@ namespace
 	FBlueprintDependencyObjectRef(TEXT("/Game/props/log"), TEXT("log"), TEXT("log"), TEXT("/Script/Engine"), TEXT("StaticMesh")),
 	FBlueprintDependencyObjectRef(TEXT("/Game/particles"), TEXT("woodchipParticle"), TEXT("woodchipParticle"), TEXT("/Script/Engine"), TEXT("ParticleSystem")),
 	FBlueprintDependencyObjectRef(TEXT("/Game/audio/freeze"), TEXT("ui_casual_pops_back"), TEXT("ui_casual_pops_back"), TEXT("/Script/Engine"), TEXT("SoundWave")),
-	FBlueprintDependencyObjectRef(TEXT("/Game/audio"), TEXT("chopConcurrency"), TEXT("chopConcurrency"), TEXT("/Script/Engine"), TEXT("SoundConcurrency")),
+	FBlueprintDependencyObjectRef(TEXT("/Game/materials/physicalMat"), TEXT("bigTreeLeafPhysicalMat"), TEXT("bigTreeLeafPhysicalMat"), TEXT("/Script/Engine"), TEXT("PhysicalMaterial")),
+	FBlueprintDependencyObjectRef(TEXT("/Game/materials/physicalMat"), TEXT("bigTreeTrunkPhysicalMat"), TEXT("bigTreeTrunkPhysicalMat"), TEXT("/Script/Engine"), TEXT("PhysicalMaterial")),
 	FBlueprintDependencyObjectRef(TEXT("/Game/audio/thump"), TEXT("wood_thump_low"), TEXT("wood_thump_low"), TEXT("/Script/Engine"), TEXT("SoundWave")),
+	FBlueprintDependencyObjectRef(TEXT("/Game/audio/branchFallDebris"), TEXT("WOOD_Branch_Fall_Debris_SBPWD1_064"), TEXT("WOOD_Branch_Fall_Debris_SBPWD1_064"), TEXT("/Script/Engine"), TEXT("SoundWave")),
+	FBlueprintDependencyObjectRef(TEXT("/Game/audio/branchFallDebris"), TEXT("WOOD_Branch_Fall_Debris_SBPWD1_065"), TEXT("WOOD_Branch_Fall_Debris_SBPWD1_065"), TEXT("/Script/Engine"), TEXT("SoundWave")),
+	FBlueprintDependencyObjectRef(TEXT("/Game/audio/branchFallDebris"), TEXT("WOOD_Branch_Fall_Debris_SBPWD1_066"), TEXT("WOOD_Branch_Fall_Debris_SBPWD1_066"), TEXT("/Script/Engine"), TEXT("SoundWave")),
+	FBlueprintDependencyObjectRef(TEXT("/Game/audio/branchFallDebris"), TEXT("WOOD_Branch_Fall_Debris_SBPWD1_067"), TEXT("WOOD_Branch_Fall_Debris_SBPWD1_067"), TEXT("/Script/Engine"), TEXT("SoundWave")),
+	FBlueprintDependencyObjectRef(TEXT("/Game/audio/branchFallDebris"), TEXT("WOOD_Branch_Fall_Debris_SBPWD1_068"), TEXT("WOOD_Branch_Fall_Debris_SBPWD1_068"), TEXT("/Script/Engine"), TEXT("SoundWave")),
+	FBlueprintDependencyObjectRef(TEXT("/Game/audio/branchFallDebris"), TEXT("WOOD_Branch_Fall_Debris_SBPWD1_069"), TEXT("WOOD_Branch_Fall_Debris_SBPWD1_069"), TEXT("/Script/Engine"), TEXT("SoundWave")),
+	FBlueprintDependencyObjectRef(TEXT("/Game/audio/branchFallDebris"), TEXT("WOOD_Branch_Fall_Debris_SBPWD1_070"), TEXT("WOOD_Branch_Fall_Debris_SBPWD1_070"), TEXT("/Script/Engine"), TEXT("SoundWave")),
+	FBlueprintDependencyObjectRef(TEXT("/Game/audio/branchFallDebris"), TEXT("WOOD_Branch_Fall_Debris_SBPWD1_071"), TEXT("WOOD_Branch_Fall_Debris_SBPWD1_071"), TEXT("/Script/Engine"), TEXT("SoundWave")),
+	FBlueprintDependencyObjectRef(TEXT("/Game/audio/branchFallDebris"), TEXT("WOOD_Branch_Fall_Debris_SBPWD1_072"), TEXT("WOOD_Branch_Fall_Debris_SBPWD1_072"), TEXT("/Script/Engine"), TEXT("SoundWave")),
+	FBlueprintDependencyObjectRef(TEXT("/Game/audio/branchFallDebris"), TEXT("WOOD_Branch_Fall_Debris_SBPWD1_073"), TEXT("WOOD_Branch_Fall_Debris_SBPWD1_073"), TEXT("/Script/Engine"), TEXT("SoundWave")),
+	FBlueprintDependencyObjectRef(TEXT("/Game/audio/logFall"), TEXT("WOOD_Impact_Log_SBPWD1_267"), TEXT("WOOD_Impact_Log_SBPWD1_267"), TEXT("/Script/Engine"), TEXT("SoundWave")),
+	FBlueprintDependencyObjectRef(TEXT("/Game/audio/logFall"), TEXT("WOOD_Impact_Log_SBPWD1_268"), TEXT("WOOD_Impact_Log_SBPWD1_268"), TEXT("/Script/Engine"), TEXT("SoundWave")),
+	FBlueprintDependencyObjectRef(TEXT("/Game/audio/logFall"), TEXT("WOOD_Impact_Log_SBPWD1_269"), TEXT("WOOD_Impact_Log_SBPWD1_269"), TEXT("/Script/Engine"), TEXT("SoundWave")),
+	FBlueprintDependencyObjectRef(TEXT("/Game/audio/logFall"), TEXT("WOOD_Impact_Log_SBPWD1_270"), TEXT("WOOD_Impact_Log_SBPWD1_270"), TEXT("/Script/Engine"), TEXT("SoundWave")),
+	FBlueprintDependencyObjectRef(TEXT("/Game/audio/logFall"), TEXT("WOOD_Impact_Log_SBPWD1_271"), TEXT("WOOD_Impact_Log_SBPWD1_271"), TEXT("/Script/Engine"), TEXT("SoundWave")),
 	FBlueprintDependencyObjectRef(TEXT("/Game/Blueprints/spawners"), TEXT("holsterSpawner"), TEXT("holsterSpawner_C"), TEXT("/Script/Engine"), TEXT("BlueprintGeneratedClass")),
 	FBlueprintDependencyObjectRef(TEXT("/Game/Blueprints/choppableItems"), TEXT("choppable"), TEXT("choppable_C"), TEXT("/Script/CoreUObject"), TEXT("DynamicClass")),
+	FBlueprintDependencyObjectRef(TEXT("/Game/Blueprints/choppableItems"), TEXT("choppableHitMass"), TEXT("choppableHitMass"), TEXT("/Script/CoreUObject"), TEXT("Enum")),
 	FBlueprintDependencyObjectRef(TEXT("/Game/ProtoVRHand/Blueprints/Example"), TEXT("Enum_Grip"), TEXT("Enum_Grip"), TEXT("/Script/CoreUObject"), TEXT("Enum")),
 	FBlueprintDependencyObjectRef(TEXT("/Game/materials/menu"), TEXT("MenuTextMatInst"), TEXT("MenuTextMatInst"), TEXT("/Script/Engine"), TEXT("MaterialInstanceConstant")),
 	FBlueprintDependencyObjectRef(TEXT("/Game/Blueprints/pawn"), TEXT("log_pawn"), TEXT("log_pawn_C"), TEXT("/Script/Engine"), TEXT("BlueprintGeneratedClass")),
@@ -76,12 +93,12 @@ namespace
 	FBlueprintDependencyObjectRef(TEXT("/Game/audio/walkieTalkie"), TEXT("walkieTalkieAttenuation"), TEXT("walkieTalkieAttenuation"), TEXT("/Script/Engine"), TEXT("SoundAttenuation")),
 	FBlueprintDependencyObjectRef(TEXT("/Game/audio/soundtrack"), TEXT("04_Hard_Time_Killin__Floor_Blues_mp3"), TEXT("04_Hard_Time_Killin__Floor_Blues_mp3"), TEXT("/Script/Engine"), TEXT("SoundWave")),
 	FBlueprintDependencyObjectRef(TEXT("/Game/props/walkieTalkie"), TEXT("SM_walkieTalkie"), TEXT("SM_walkieTalkie"), TEXT("/Script/Engine"), TEXT("StaticMesh")),
+	FBlueprintDependencyObjectRef(TEXT("/Game/props/mushrooms/mushroomWall"), TEXT("mushroomWall"), TEXT("mushroomWall"), TEXT("/Script/Engine"), TEXT("StaticMesh")),
+	FBlueprintDependencyObjectRef(TEXT("/Game/props/mushrooms/mushroomThreeSingle"), TEXT("mushroomThreeSingle"), TEXT("mushroomThreeSingle"), TEXT("/Script/Engine"), TEXT("StaticMesh")),
+	FBlueprintDependencyObjectRef(TEXT("/Game/props/mushrooms/mushroom4v3"), TEXT("mushroom4v3"), TEXT("mushroom4v3"), TEXT("/Script/Engine"), TEXT("StaticMesh")),
+	FBlueprintDependencyObjectRef(TEXT("/Game/props/mushrooms/mushroom4v1"), TEXT("mushroom4v1"), TEXT("mushroom4v1"), TEXT("/Script/Engine"), TEXT("StaticMesh")),
 	FBlueprintDependencyObjectRef(TEXT("/Game/props/lightsaberPlatform"), TEXT("lightsaber_platform"), TEXT("lightsaber_platform"), TEXT("/Script/Engine"), TEXT("StaticMesh")),
 	FBlueprintDependencyObjectRef(TEXT("/Game/props/rockFormationOne"), TEXT("M_rockFormation"), TEXT("M_rockFormation"), TEXT("/Script/Engine"), TEXT("MaterialInstanceConstant")),
-	FBlueprintDependencyObjectRef(TEXT("/Game/props/mushrooms/mushroom4v1"), TEXT("mushroom4v1"), TEXT("mushroom4v1"), TEXT("/Script/Engine"), TEXT("StaticMesh")),
-	FBlueprintDependencyObjectRef(TEXT("/Game/props/mushrooms/mushroom4v3"), TEXT("mushroom4v3"), TEXT("mushroom4v3"), TEXT("/Script/Engine"), TEXT("StaticMesh")),
-	FBlueprintDependencyObjectRef(TEXT("/Game/props/mushrooms/mushroomThreeSingle"), TEXT("mushroomThreeSingle"), TEXT("mushroomThreeSingle"), TEXT("/Script/Engine"), TEXT("StaticMesh")),
-	FBlueprintDependencyObjectRef(TEXT("/Game/props/mushrooms/mushroomWall"), TEXT("mushroomWall"), TEXT("mushroomWall"), TEXT("/Script/Engine"), TEXT("StaticMesh")),
 	FBlueprintDependencyObjectRef(TEXT("/Game/props/boulder"), TEXT("SM_boulder"), TEXT("SM_boulder"), TEXT("/Script/Engine"), TEXT("StaticMesh")),
 	};
 }
@@ -89,7 +106,7 @@ const FBlueprintDependencyObjectRef& F__NativeDependencies::Get(int16 Index)
 {
 static const FBlueprintDependencyObjectRef& NullObjectRef = FBlueprintDependencyObjectRef();
 if (Index == -1) { return NullObjectRef; }
-	check((Index >= 0) && (Index < 75));
+	check((Index >= 0) && (Index < 92));
 	return ::NativizedCodeDependenties[Index];
 };
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
