@@ -910,6 +910,12 @@ struct FUnconvertedWrapper__Alog_pawn_C__pf2672032748 : public FUnconvertedWrapp
 		UFunction* __Function = __Object->FindFunctionChecked(__FunctionName);
 		__Object->ProcessEvent(__Function, nullptr);
 	}
+	FORCENOINLINE void bpf__delayedTitleMenu__pf()
+	{
+		static const FName __FunctionName(TEXT("delayedTitleMenu"));
+		UFunction* __Function = __Object->FindFunctionChecked(__FunctionName);
+		__Object->ProcessEvent(__Function, nullptr);
+	}
 	FORCENOINLINE void bpf__reinitChoppableObject__DelegateSignature__pf()
 	{
 		static const FName __FunctionName(TEXT("reinitChoppableObject__DelegateSignature"));

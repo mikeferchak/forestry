@@ -96,6 +96,8 @@ public:
 	bool bpv__isSticky__pf;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta=(DisplayName="Chop Sounds", Category="Default", OverrideNativeName="chopSounds"))
 	TArray<USoundBase*> bpv__chopSounds__pf;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, meta=(DisplayName="Min Choppable Mass", Category="Default", OverrideNativeName="minChoppableMass"))
+	float bpv__minChoppableMass__pf;
 	UPROPERTY(Transient, DuplicateTransient, meta=(OverrideNativeName="Temp_struct_Variable"))
 	FVector b0l__Temp_struct_Variable__pf;
 	UPROPERTY(Transient, DuplicateTransient, meta=(OverrideNativeName="K2Node_DynamicCast_AsMotion_Controller_Component"))
@@ -108,24 +110,24 @@ public:
 	AActor* b0l__K2Node_DynamicCast_AsBP_Motion_Controller__pf;
 	UPROPERTY(Transient, DuplicateTransient, meta=(OverrideNativeName="K2Node_DynamicCast_bSuccess2"))
 	bool b0l__K2Node_DynamicCast_bSuccess2__pf;
-	UPROPERTY(Transient, DuplicateTransient, meta=(OverrideNativeName="CallFunc_GrabComponent_didGrab"))
-	bool b0l__CallFunc_GrabComponent_didGrab__pf;
 	UPROPERTY(Transient, DuplicateTransient, meta=(OverrideNativeName="Temp_struct_Variable3"))
 	FVector b0l__Temp_struct_Variable3__pf;
+	UPROPERTY(Transient, DuplicateTransient, meta=(OverrideNativeName="CallFunc_GrabComponent_didGrab"))
+	bool b0l__CallFunc_GrabComponent_didGrab__pf;
+	UPROPERTY(Transient, DuplicateTransient, meta=(OverrideNativeName="Temp_struct_Variable4"))
+	FVector b0l__Temp_struct_Variable4__pf;
 	UPROPERTY(Transient, DuplicateTransient, meta=(OverrideNativeName="K2Node_DynamicCast_AsBP_Motion_Controller2"))
 	AActor* b0l__K2Node_DynamicCast_AsBP_Motion_Controller2__pf;
 	UPROPERTY(Transient, DuplicateTransient, meta=(OverrideNativeName="K2Node_DynamicCast_bSuccess3"))
 	bool b0l__K2Node_DynamicCast_bSuccess3__pf;
-	UPROPERTY(Transient, DuplicateTransient, meta=(OverrideNativeName="Temp_struct_Variable4"))
-	FVector b0l__Temp_struct_Variable4__pf;
 	UPROPERTY(Transient, DuplicateTransient, meta=(OverrideNativeName="Temp_struct_Variable5"))
 	FVector b0l__Temp_struct_Variable5__pf;
 	UPROPERTY(Transient, DuplicateTransient, meta=(OverrideNativeName="Temp_struct_Variable6"))
 	FVector b0l__Temp_struct_Variable6__pf;
-	UPROPERTY(Transient, DuplicateTransient, meta=(OverrideNativeName="CallFunc_Array_Get_Item"))
-	USoundBase* b0l__CallFunc_Array_Get_Item__pf;
 	UPROPERTY(Transient, DuplicateTransient, meta=(OverrideNativeName="Temp_struct_Variable7"))
 	FVector b0l__Temp_struct_Variable7__pf;
+	UPROPERTY(Transient, DuplicateTransient, meta=(OverrideNativeName="CallFunc_Array_Get_Item"))
+	USoundBase* b0l__CallFunc_Array_Get_Item__pf;
 	UPROPERTY(Transient, DuplicateTransient, meta=(OverrideNativeName="CallFunc_SliceProceduralMesh_OutOtherHalfProcMesh"))
 	UProceduralMeshComponent* b0l__CallFunc_SliceProceduralMesh_OutOtherHalfProcMesh__pf;
 	UPROPERTY(Transient, DuplicateTransient, meta=(OverrideNativeName="Temp_struct_Variable8"))
@@ -146,8 +148,6 @@ public:
 	int32 b0l__Temp_int_Loop_Counter_Variable2__pf;
 	UPROPERTY(Transient, DuplicateTransient, meta=(OverrideNativeName="Temp_int_Array_Index_Variable2"))
 	int32 b0l__Temp_int_Array_Index_Variable2__pf;
-	UPROPERTY(Transient, DuplicateTransient, meta=(OverrideNativeName="CallFunc_Array_Get_Item2"))
-	UProceduralMeshComponent* b0l__CallFunc_Array_Get_Item2__pf;
 	UPROPERTY(Transient, DuplicateTransient, meta=(OverrideNativeName="K2Node_Event_AttachTo2"))
 	USceneComponent* b0l__K2Node_Event_AttachTo2__pf;
 	UPROPERTY(Transient, DuplicateTransient, meta=(OverrideNativeName="K2Node_CustomEvent_hit"))
@@ -216,10 +216,12 @@ public:
 	FHitResult b0l__K2Node_Event_Hit__pf;
 	UPROPERTY(Transient, DuplicateTransient, meta=(OverrideNativeName="Temp_byte_Variable"))
 	EControllerHand b0l__Temp_byte_Variable__pf;
-	UPROPERTY(Transient, DuplicateTransient, meta=(OverrideNativeName="CallFunc_Array_Get_Item3"))
-	UProceduralMeshComponent* b0l__CallFunc_Array_Get_Item3__pf;
+	UPROPERTY(Transient, DuplicateTransient, meta=(OverrideNativeName="CallFunc_Array_Get_Item2"))
+	UProceduralMeshComponent* b0l__CallFunc_Array_Get_Item2__pf;
 	UPROPERTY(Transient, DuplicateTransient, meta=(OverrideNativeName="K2Node_Select_Default"))
 	FVector b0l__K2Node_Select_Default__pf;
+	UPROPERTY(Transient, DuplicateTransient, meta=(OverrideNativeName="CallFunc_Array_Get_Item3"))
+	UProceduralMeshComponent* b0l__CallFunc_Array_Get_Item3__pf;
 	Achoppable_C__pf1172009058(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get());
 	virtual void PostLoadSubobjects(FObjectInstancingGraph* OuterInstanceGraph) override;
 	static void __CustomDynamicClassInitialization(UDynamicClass* InDynamicClass);
@@ -229,8 +231,8 @@ public:
 	void bpf__ExecuteUbergraph_choppable__pf_0(int32 bpp__EntryPoint__pf);
 	void bpf__ExecuteUbergraph_choppable__pf_1(int32 bpp__EntryPoint__pf);
 	void bpf__ExecuteUbergraph_choppable__pf_2(int32 bpp__EntryPoint__pf);
-	UFUNCTION(meta=(OverrideNativeName="ExecuteUbergraph_choppable_3"))
 	void bpf__ExecuteUbergraph_choppable__pf_3(int32 bpp__EntryPoint__pf);
+	UFUNCTION(meta=(OverrideNativeName="ExecuteUbergraph_choppable_4"))
 	void bpf__ExecuteUbergraph_choppable__pf_4(int32 bpp__EntryPoint__pf);
 	void bpf__ExecuteUbergraph_choppable__pf_5(int32 bpp__EntryPoint__pf);
 	void bpf__ExecuteUbergraph_choppable__pf_6(int32 bpp__EntryPoint__pf);

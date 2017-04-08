@@ -348,6 +348,7 @@ Achoppable_C__pf1172009058::Achoppable_C__pf1172009058(const FObjectInitializer&
 	bpv__chopSounds__pf.Add(CastChecked<USoundBase>(CastChecked<UDynamicClass>(Achoppable_C__pf1172009058::StaticClass())->UsedAssets[7], ECastCheckedType::NullAllowed));
 	bpv__chopSounds__pf.Add(CastChecked<USoundBase>(CastChecked<UDynamicClass>(Achoppable_C__pf1172009058::StaticClass())->UsedAssets[8], ECastCheckedType::NullAllowed));
 	bpv__chopSounds__pf.Add(CastChecked<USoundBase>(CastChecked<UDynamicClass>(Achoppable_C__pf1172009058::StaticClass())->UsedAssets[9], ECastCheckedType::NullAllowed));
+	bpv__minChoppableMass__pf = 0.300000f;
 }
 void Achoppable_C__pf1172009058::PostLoadSubobjects(FObjectInstancingGraph* OuterInstanceGraph)
 {
@@ -381,39 +382,41 @@ void Achoppable_C__pf1172009058::__CustomDynamicClassInitialization(UDynamicClas
 }
 void Achoppable_C__pf1172009058::bpf__ExecuteUbergraph_choppable__pf_0(int32 bpp__EntryPoint__pf)
 {
-	int32 bpfv__CallFunc_Array_Length_ReturnValue__pf{};
 	AActor* bpfv__CallFunc_GetOwner_ReturnValue__pf{};
 	float bpfv__CallFunc_VSize_ReturnValue__pf{};
 	FVector bpfv__CallFunc_Multiply_VectorFloat_ReturnValue__pf(EForceInit::ForceInit);
 	UParticleSystemComponent* bpfv__CallFunc_SpawnEmitterAtLocation_ReturnValue__pf{};
 	FRotator bpfv__CallFunc_K2_GetComponentRotation_ReturnValue__pf(EForceInit::ForceInit);
-	AActor* bpfv__CallFunc_GetOwner_ReturnValue2__pf{};
 	FVector bpfv__CallFunc_GetRightVector_ReturnValue__pf(EForceInit::ForceInit);
+	AActor* bpfv__CallFunc_GetOwner_ReturnValue2__pf{};
 	FVector bpfv__CallFunc_MakeVector_ReturnValue__pf(EForceInit::ForceInit);
 	FVector bpfv__CallFunc_MakeVector_ReturnValue2__pf(EForceInit::ForceInit);
 	bool bpfv__CallFunc_NotEqual_ObjectObject_ReturnValue__pf{};
 	FVector bpfv__CallFunc_Multiply_VectorVector_ReturnValue__pf(EForceInit::ForceInit);
 	float bpfv__CallFunc_VSize_ReturnValue2__pf{};
-	int32 bpfv__CallFunc_Array_Length_ReturnValue2__pf{};
+	int32 bpfv__CallFunc_Array_Length_ReturnValue__pf{};
 	float bpfv__CallFunc_MapRangeClamped_ReturnValue__pf{};
 	int32 bpfv__CallFunc_Subtract_IntInt_ReturnValue__pf{};
 	int32 bpfv__CallFunc_RandomIntegerInRange_ReturnValue__pf{};
 	float bpfv__CallFunc_GetAngularDamping_ReturnValue__pf{};
 	int32 bpfv__CallFunc_Array_Add_ReturnValue__pf{};
 	float bpfv__CallFunc_GetLinearDamping_ReturnValue__pf{};
-	int32 bpfv__CallFunc_Add_IntInt_ReturnValue__pf{};
-	bool bpfv__CallFunc_IsSimulatingPhysics_ReturnValue__pf{};
 	float bpfv__CallFunc_GetMass_ReturnValue__pf{};
+	bool bpfv__CallFunc_LessEqual_FloatFloat_ReturnValue__pf{};
+	bool bpfv__CallFunc_IsSimulatingPhysics_ReturnValue__pf{};
+	int32 bpfv__CallFunc_Add_IntInt_ReturnValue__pf{};
+	float bpfv__CallFunc_GetMass_ReturnValue2__pf{};
 	float bpfv__CallFunc_Sqrt_ReturnValue__pf{};
-	bool bpfv__CallFunc_Less_IntInt_ReturnValue__pf{};
 	float bpfv__CallFunc_Multiply_FloatFloat_ReturnValue__pf{};
 	float bpfv__CallFunc_FClamp_ReturnValue__pf{};
 	int32 bpfv__CallFunc_Add_IntInt_ReturnValue2__pf{};
-	float bpfv__CallFunc_GetMass_ReturnValue2__pf{};
-	bool bpfv__CallFunc_LessEqual_FloatFloat_ReturnValue__pf{};
 	bool bpfv__CallFunc_IsValid_ReturnValue__pf{};
+	float bpfv__CallFunc_GetMass_ReturnValue3__pf{};
+	bool bpfv__CallFunc_GreaterEqual_FloatFloat_ReturnValue__pf{};
 	bool bpfv__CallFunc_IsValid_ReturnValue2__pf{};
 	UMaterialInterface* bpfv__CallFunc_GetMaterial_ReturnValue__pf{};
+	int32 bpfv__CallFunc_Array_Length_ReturnValue2__pf{};
+	bool bpfv__CallFunc_Less_IntInt_ReturnValue__pf{};
 	int32 bpfv__CallFunc_Array_Length_ReturnValue3__pf{};
 	bool bpfv__CallFunc_Less_IntInt_ReturnValue2__pf{};
 	TArray< int32, TInlineAllocator<8> > __StateStack;
@@ -432,7 +435,7 @@ void Achoppable_C__pf1172009058::bpf__ExecuteUbergraph_choppable__pf_0(int32 bpp
 			{
 				if(IsValid(bpv__outProcMesh__pf))
 				{
-					bpv__outProcMesh__pf->SetSimulatePhysics(false);
+					bpv__outProcMesh__pf->SetCollisionProfileName(FName(TEXT("choppable")));
 				}
 				__CurrentState = (__StateStack.Num() > 0) ? __StateStack.Pop(/*bAllowShrinking=*/ false) : -1;
 				break;
@@ -446,7 +449,7 @@ void Achoppable_C__pf1172009058::bpf__ExecuteUbergraph_choppable__pf_0(int32 bpp
 			{
 				if(IsValid(bpv__outProcMesh__pf))
 				{
-					bpv__outProcMesh__pf->SetCollisionProfileName(FName(TEXT("choppable")));
+					bpv__outProcMesh__pf->SetSimulatePhysics(false);
 				}
 				__CurrentState = (__StateStack.Num() > 0) ? __StateStack.Pop(/*bAllowShrinking=*/ false) : -1;
 				break;
@@ -473,9 +476,9 @@ void Achoppable_C__pf1172009058::bpf__ExecuteUbergraph_choppable__pf_0(int32 bpp
 			}
 		case 9:
 			{
-				bpfv__CallFunc_Array_Length_ReturnValue__pf = FCustomThunkTemplates::Array_Length(bpv__newProcMeshes__pf);
-				bpfv__CallFunc_Less_IntInt_ReturnValue__pf = UKismetMathLibrary::Less_IntInt(b0l__Temp_int_Loop_Counter_Variable2__pf, bpfv__CallFunc_Array_Length_ReturnValue__pf);
-				if (!bpfv__CallFunc_Less_IntInt_ReturnValue__pf)
+				bpfv__CallFunc_Array_Length_ReturnValue3__pf = FCustomThunkTemplates::Array_Length(bpv__newProcMeshes__pf);
+				bpfv__CallFunc_Less_IntInt_ReturnValue2__pf = UKismetMathLibrary::Less_IntInt(b0l__Temp_int_Loop_Counter_Variable2__pf, bpfv__CallFunc_Array_Length_ReturnValue3__pf);
+				if (!bpfv__CallFunc_Less_IntInt_ReturnValue2__pf)
 				{
 					__CurrentState = 13;
 					break;
@@ -491,10 +494,10 @@ void Achoppable_C__pf1172009058::bpf__ExecuteUbergraph_choppable__pf_0(int32 bpp
 			}
 		case 12:
 			{
-				FCustomThunkTemplates::Array_Get(bpv__newProcMeshes__pf, b0l__Temp_int_Array_Index_Variable2__pf, /*out*/ b0l__CallFunc_Array_Get_Item2__pf);
-				if(IsValid(b0l__CallFunc_Array_Get_Item2__pf))
+				FCustomThunkTemplates::Array_Get(bpv__newProcMeshes__pf, b0l__Temp_int_Array_Index_Variable2__pf, /*out*/ b0l__CallFunc_Array_Get_Item3__pf);
+				if(IsValid(b0l__CallFunc_Array_Get_Item3__pf))
 				{
-					b0l__CallFunc_Array_Get_Item2__pf->SetCollisionProfileName(FName(TEXT("choppable")));
+					b0l__CallFunc_Array_Get_Item3__pf->SetCollisionProfileName(FName(TEXT("choppable")));
 				}
 				__CurrentState = (__StateStack.Num() > 0) ? __StateStack.Pop(/*bAllowShrinking=*/ false) : -1;
 				break;
@@ -579,9 +582,9 @@ void Achoppable_C__pf1172009058::bpf__ExecuteUbergraph_choppable__pf_0(int32 bpp
 			}
 		case 26:
 			{
-				bpfv__CallFunc_Array_Length_ReturnValue3__pf = FCustomThunkTemplates::Array_Length(bpv__newProcMeshes__pf);
-				bpfv__CallFunc_Less_IntInt_ReturnValue2__pf = UKismetMathLibrary::Less_IntInt(b0l__Temp_int_Loop_Counter_Variable__pf, bpfv__CallFunc_Array_Length_ReturnValue3__pf);
-				if (!bpfv__CallFunc_Less_IntInt_ReturnValue2__pf)
+				bpfv__CallFunc_Array_Length_ReturnValue2__pf = FCustomThunkTemplates::Array_Length(bpv__newProcMeshes__pf);
+				bpfv__CallFunc_Less_IntInt_ReturnValue__pf = UKismetMathLibrary::Less_IntInt(b0l__Temp_int_Loop_Counter_Variable__pf, bpfv__CallFunc_Array_Length_ReturnValue2__pf);
+				if (!bpfv__CallFunc_Less_IntInt_ReturnValue__pf)
 				{
 					__CurrentState = 31;
 					break;
@@ -597,10 +600,10 @@ void Achoppable_C__pf1172009058::bpf__ExecuteUbergraph_choppable__pf_0(int32 bpp
 			}
 		case 29:
 			{
-				FCustomThunkTemplates::Array_Get(bpv__newProcMeshes__pf, b0l__Temp_int_Array_Index_Variable__pf, /*out*/ b0l__CallFunc_Array_Get_Item3__pf);
-				if(IsValid(b0l__CallFunc_Array_Get_Item3__pf))
+				FCustomThunkTemplates::Array_Get(bpv__newProcMeshes__pf, b0l__Temp_int_Array_Index_Variable__pf, /*out*/ b0l__CallFunc_Array_Get_Item2__pf);
+				if(IsValid(b0l__CallFunc_Array_Get_Item2__pf))
 				{
-					b0l__CallFunc_Array_Get_Item3__pf->SetCollisionProfileName(FName(TEXT("pickupNoChop")));
+					b0l__CallFunc_Array_Get_Item2__pf->SetCollisionProfileName(FName(TEXT("pickupNoChop")));
 				}
 				__CurrentState = (__StateStack.Num() > 0) ? __StateStack.Pop(/*bAllowShrinking=*/ false) : -1;
 				break;
@@ -637,9 +640,9 @@ void Achoppable_C__pf1172009058::bpf__ExecuteUbergraph_choppable__pf_0(int32 bpp
 				b0l__Temp_struct_Variable__pf = FVector(0.000000,0.000000,0.000000);
 				b0l__Temp_struct_Variable2__pf = FVector(0.000000,0.000000,0.000000);
 				b0l__Temp_struct_Variable3__pf = FVector(0.000000,0.000000,0.000000);
+				b0l__Temp_struct_Variable4__pf = FVector(0.000000,0.000000,0.000000);
 				bpfv__CallFunc_MakeVector_ReturnValue__pf = UKismetMathLibrary::MakeVector(-1.000000, -1.000000, -1.000000);
 				bpfv__CallFunc_MakeVector_ReturnValue2__pf = UKismetMathLibrary::MakeVector(1.000000, 1.000000, 1.000000);
-				b0l__Temp_struct_Variable4__pf = FVector(0.000000,0.000000,0.000000);
 				b0l__Temp_struct_Variable5__pf = FVector(0.000000,0.000000,0.000000);
 				b0l__Temp_struct_Variable6__pf = FVector(0.000000,0.000000,0.000000);
 				b0l__Temp_struct_Variable7__pf = FVector(0.000000,0.000000,0.000000);
@@ -650,7 +653,7 @@ void Achoppable_C__pf1172009058::bpf__ExecuteUbergraph_choppable__pf_0(int32 bpp
 				b0l__Temp_struct_Variable12__pf = FVector(0.000000,0.000000,0.000000);
 				EControllerHand  __Local__5 = EControllerHand::Left;
 				b0l__Temp_byte_Variable__pf = ((IsValid(b0l__K2Node_DynamicCast_AsBP_Motion_Controller2__pf)) ? (FUnconvertedWrapper__ABP_MotionController_C__pf563933975(b0l__K2Node_DynamicCast_AsBP_Motion_Controller2__pf).GetRef__Hand__pf()) : (__Local__5));
-				bpv__planeNormalMuliplier__pf = TSwitchValue<EControllerHand , FVector >(b0l__Temp_byte_Variable__pf, b0l__K2Node_Select_Default__pf, 14, TSwitchPair<EControllerHand , FVector >(EControllerHand::Left, bpfv__CallFunc_MakeVector_ReturnValue__pf), TSwitchPair<EControllerHand , FVector >(EControllerHand::Right, bpfv__CallFunc_MakeVector_ReturnValue2__pf), TSwitchPair<EControllerHand , FVector >(EControllerHand::Pad, b0l__Temp_struct_Variable2__pf), TSwitchPair<EControllerHand , FVector >(EControllerHand::ExternalCamera, b0l__Temp_struct_Variable4__pf), TSwitchPair<EControllerHand , FVector >(EControllerHand::Gun, b0l__Temp_struct_Variable5__pf), TSwitchPair<EControllerHand , FVector >(EControllerHand::Special_1, b0l__Temp_struct_Variable10__pf), TSwitchPair<EControllerHand , FVector >(EControllerHand::Special_2, b0l__Temp_struct_Variable__pf), TSwitchPair<EControllerHand , FVector >(EControllerHand::Special_3, b0l__Temp_struct_Variable3__pf), TSwitchPair<EControllerHand , FVector >(EControllerHand::Special_4, b0l__Temp_struct_Variable6__pf), TSwitchPair<EControllerHand , FVector >(EControllerHand::Special_5, b0l__Temp_struct_Variable7__pf), TSwitchPair<EControllerHand , FVector >(EControllerHand::Special_6, b0l__Temp_struct_Variable8__pf), TSwitchPair<EControllerHand , FVector >(EControllerHand::Special_7, b0l__Temp_struct_Variable9__pf), TSwitchPair<EControllerHand , FVector >(EControllerHand::Special_8, b0l__Temp_struct_Variable11__pf), TSwitchPair<EControllerHand , FVector >(EControllerHand::Special_9, b0l__Temp_struct_Variable12__pf));
+				bpv__planeNormalMuliplier__pf = TSwitchValue<EControllerHand , FVector >(b0l__Temp_byte_Variable__pf, b0l__K2Node_Select_Default__pf, 14, TSwitchPair<EControllerHand , FVector >(EControllerHand::Left, bpfv__CallFunc_MakeVector_ReturnValue__pf), TSwitchPair<EControllerHand , FVector >(EControllerHand::Right, bpfv__CallFunc_MakeVector_ReturnValue2__pf), TSwitchPair<EControllerHand , FVector >(EControllerHand::Pad, b0l__Temp_struct_Variable3__pf), TSwitchPair<EControllerHand , FVector >(EControllerHand::ExternalCamera, b0l__Temp_struct_Variable5__pf), TSwitchPair<EControllerHand , FVector >(EControllerHand::Gun, b0l__Temp_struct_Variable6__pf), TSwitchPair<EControllerHand , FVector >(EControllerHand::Special_1, b0l__Temp_struct_Variable11__pf), TSwitchPair<EControllerHand , FVector >(EControllerHand::Special_2, b0l__Temp_struct_Variable__pf), TSwitchPair<EControllerHand , FVector >(EControllerHand::Special_3, b0l__Temp_struct_Variable2__pf), TSwitchPair<EControllerHand , FVector >(EControllerHand::Special_4, b0l__Temp_struct_Variable4__pf), TSwitchPair<EControllerHand , FVector >(EControllerHand::Special_5, b0l__Temp_struct_Variable7__pf), TSwitchPair<EControllerHand , FVector >(EControllerHand::Special_6, b0l__Temp_struct_Variable8__pf), TSwitchPair<EControllerHand , FVector >(EControllerHand::Special_7, b0l__Temp_struct_Variable9__pf), TSwitchPair<EControllerHand , FVector >(EControllerHand::Special_8, b0l__Temp_struct_Variable10__pf), TSwitchPair<EControllerHand , FVector >(EControllerHand::Special_9, b0l__Temp_struct_Variable12__pf));
 			}
 		case 34:
 			{
@@ -707,9 +710,9 @@ void Achoppable_C__pf1172009058::bpf__ExecuteUbergraph_choppable__pf_0(int32 bpp
 			{
 				if(IsValid(bpv__outProcMesh__pf))
 				{
-					bpfv__CallFunc_GetMass_ReturnValue2__pf = bpv__outProcMesh__pf->GetMass();
+					bpfv__CallFunc_GetMass_ReturnValue__pf = bpv__outProcMesh__pf->GetMass();
 				}
-				bpfv__CallFunc_LessEqual_FloatFloat_ReturnValue__pf = UKismetMathLibrary::LessEqual_FloatFloat(bpfv__CallFunc_GetMass_ReturnValue2__pf, 40.000000);
+				bpfv__CallFunc_LessEqual_FloatFloat_ReturnValue__pf = UKismetMathLibrary::LessEqual_FloatFloat(bpfv__CallFunc_GetMass_ReturnValue__pf, 40.000000);
 				if(IsValid(bpv__outProcMesh__pf))
 				{
 					bpv__outProcMesh__pf->UPrimitiveComponent::SetCastShadow(bpfv__CallFunc_LessEqual_FloatFloat_ReturnValue__pf);
@@ -739,7 +742,7 @@ void Achoppable_C__pf1172009058::bpf__ExecuteUbergraph_choppable__pf_0(int32 bpp
 			}
 		case 45:
 			{
-				UKismetSystemLibrary::Delay(this, 0.300000, FLatentActionInfo(3, 1440855481, TEXT("ExecuteUbergraph_choppable_0"), this));
+				UKismetSystemLibrary::Delay(this, 0.300000, FLatentActionInfo(1, 1440855481, TEXT("ExecuteUbergraph_choppable_0"), this));
 				__CurrentState = (__StateStack.Num() > 0) ? __StateStack.Pop(/*bAllowShrinking=*/ false) : -1;
 				break;
 			}
@@ -778,21 +781,21 @@ void Achoppable_C__pf1172009058::bpf__ExecuteUbergraph_choppable__pf_0(int32 bpp
 			{
 				if(IsValid(bpv__outProcMesh__pf))
 				{
-					bpfv__CallFunc_GetMass_ReturnValue__pf = bpv__outProcMesh__pf->GetMass();
+					bpfv__CallFunc_GetMass_ReturnValue2__pf = bpv__outProcMesh__pf->GetMass();
 				}
-				bpfv__CallFunc_Sqrt_ReturnValue__pf = UKismetMathLibrary::Sqrt(bpfv__CallFunc_GetMass_ReturnValue__pf);
+				bpfv__CallFunc_Sqrt_ReturnValue__pf = UKismetMathLibrary::Sqrt(bpfv__CallFunc_GetMass_ReturnValue2__pf);
 				bpfv__CallFunc_Multiply_FloatFloat_ReturnValue__pf = UKismetMathLibrary::Multiply_FloatFloat(bpfv__CallFunc_Sqrt_ReturnValue__pf, 5.000000);
 				bpfv__CallFunc_FClamp_ReturnValue__pf = UKismetMathLibrary::FClamp(bpfv__CallFunc_Multiply_FloatFloat_ReturnValue__pf, 1.000000, 40.000000);
-				UKismetSystemLibrary::Delay(this, bpfv__CallFunc_FClamp_ReturnValue__pf, FLatentActionInfo(1, 1749343656, TEXT("ExecuteUbergraph_choppable_0"), this));
+				UKismetSystemLibrary::Delay(this, bpfv__CallFunc_FClamp_ReturnValue__pf, FLatentActionInfo(3, 2147483647, TEXT("ExecuteUbergraph_choppable_0"), this));
 				__CurrentState = (__StateStack.Num() > 0) ? __StateStack.Pop(/*bAllowShrinking=*/ false) : -1;
 				break;
 			}
 		case 51:
 			{
 				bpfv__CallFunc_VSize_ReturnValue2__pf = UKismetMathLibrary::VSize(bpv__chopImpulse__pf);
-				bpfv__CallFunc_Array_Length_ReturnValue2__pf = FCustomThunkTemplates::Array_Length(bpv__chopSounds__pf);
+				bpfv__CallFunc_Array_Length_ReturnValue__pf = FCustomThunkTemplates::Array_Length(bpv__chopSounds__pf);
 				bpfv__CallFunc_MapRangeClamped_ReturnValue__pf = UKismetMathLibrary::MapRangeClamped(bpfv__CallFunc_VSize_ReturnValue2__pf, 0.000000, 10000.000000, 0.000000, 5.000000);
-				bpfv__CallFunc_Subtract_IntInt_ReturnValue__pf = UKismetMathLibrary::Subtract_IntInt(bpfv__CallFunc_Array_Length_ReturnValue2__pf, 1);
+				bpfv__CallFunc_Subtract_IntInt_ReturnValue__pf = UKismetMathLibrary::Subtract_IntInt(bpfv__CallFunc_Array_Length_ReturnValue__pf, 1);
 				bpfv__CallFunc_RandomIntegerInRange_ReturnValue__pf = UKismetMathLibrary::RandomIntegerInRange(0, bpfv__CallFunc_Subtract_IntInt_ReturnValue__pf);
 				FCustomThunkTemplates::Array_Get(bpv__chopSounds__pf, bpfv__CallFunc_RandomIntegerInRange_ReturnValue__pf, /*out*/ b0l__CallFunc_Array_Get_Item__pf);
 				UGameplayStatics::PlaySoundAtLocation(this, b0l__CallFunc_Array_Get_Item__pf, bpv__chopImpactPoint__pf, FRotator(0.000000,0.000000,0.000000), bpfv__CallFunc_MapRangeClamped_ReturnValue__pf, 1.000000, 0.000000, CastChecked<USoundAttenuation>(CastChecked<UDynamicClass>(Achoppable_C__pf1172009058::StaticClass())->UsedAssets[12], ECastCheckedType::NullAllowed), ((USoundConcurrency*)nullptr));
@@ -908,6 +911,31 @@ void Achoppable_C__pf1172009058::bpf__ExecuteUbergraph_choppable__pf_0(int32 bpp
 				{
 					b0l__K2Node_CustomEvent_component__pf->SetSimulatePhysics(true);
 				}
+			}
+		case 78:
+			{
+				if(IsValid(b0l__K2Node_CustomEvent_component__pf))
+				{
+					bpfv__CallFunc_GetMass_ReturnValue3__pf = b0l__K2Node_CustomEvent_component__pf->GetMass();
+				}
+				bpfv__CallFunc_GreaterEqual_FloatFloat_ReturnValue__pf = UKismetMathLibrary::GreaterEqual_FloatFloat(bpfv__CallFunc_GetMass_ReturnValue3__pf, bpv__minChoppableMass__pf);
+				if (!bpfv__CallFunc_GreaterEqual_FloatFloat_ReturnValue__pf)
+				{
+					__CurrentState = (__StateStack.Num() > 0) ? __StateStack.Pop(/*bAllowShrinking=*/ false) : -1;
+					break;
+				}
+			}
+		case 79:
+			{
+				if (!bpv__canChop__pf)
+				{
+					__CurrentState = (__StateStack.Num() > 0) ? __StateStack.Pop(/*bAllowShrinking=*/ false) : -1;
+					break;
+				}
+			}
+		case 80:
+			{
+				bpv__canChop__pf = false;
 				__CurrentState = 53;
 				break;
 			}
@@ -924,7 +952,7 @@ void Achoppable_C__pf1172009058::bpf__ExecuteUbergraph_choppable__pf_1(int32 bpp
 	{
 		switch( __CurrentState )
 		{
-		case 93:
+		case 96:
 			{
 				__CurrentState = -1;
 				break;
@@ -941,7 +969,7 @@ void Achoppable_C__pf1172009058::bpf__ExecuteUbergraph_choppable__pf_2(int32 bpp
 	{
 		switch( __CurrentState )
 		{
-		case 92:
+		case 95:
 			{
 				__CurrentState = -1;
 				break;
@@ -953,13 +981,30 @@ void Achoppable_C__pf1172009058::bpf__ExecuteUbergraph_choppable__pf_2(int32 bpp
 }
 void Achoppable_C__pf1172009058::bpf__ExecuteUbergraph_choppable__pf_3(int32 bpp__EntryPoint__pf)
 {
+	int32 __CurrentState = bpp__EntryPoint__pf;
+	do
+	{
+		switch( __CurrentState )
+		{
+		case 94:
+			{
+				__CurrentState = -1;
+				break;
+			}
+		default:
+			break;
+		}
+	} while( __CurrentState != -1 );
+}
+void Achoppable_C__pf1172009058::bpf__ExecuteUbergraph_choppable__pf_4(int32 bpp__EntryPoint__pf)
+{
 	float bpfv__CallFunc_VSize_ReturnValue3__pf{};
+	bool bpfv__CallFunc_IsValid_ReturnValue4__pf{};
 	bool bpfv__CallFunc_IsSimulatingPhysics_ReturnValue2__pf{};
-	float bpfv__CallFunc_GetMass_ReturnValue3__pf{};
+	float bpfv__CallFunc_GetMass_ReturnValue4__pf{};
 	float bpfv__CallFunc_Divide_FloatFloat_ReturnValue__pf{};
 	float bpfv__CallFunc_Divide_FloatFloat_ReturnValue2__pf{};
-	bool bpfv__CallFunc_IsValid_ReturnValue4__pf{};
-	bool bpfv__CallFunc_GreaterEqual_FloatFloat_ReturnValue__pf{};
+	bool bpfv__CallFunc_GreaterEqual_FloatFloat_ReturnValue2__pf{};
 	float bpfv__CallFunc_FClamp_ReturnValue2__pf{};
 	float bpfv__CallFunc_FClamp_ReturnValue3__pf{};
 	int32 __CurrentState = bpp__EntryPoint__pf;
@@ -978,12 +1023,12 @@ void Achoppable_C__pf1172009058::bpf__ExecuteUbergraph_choppable__pf_3(int32 bpp
 				__CurrentState = -1;
 				break;
 			}
-		case 83:
+		case 86:
 			{
-				__CurrentState = 84;
+				__CurrentState = 87;
 				break;
 			}
-		case 84:
+		case 87:
 			{
 				if (!bpv__canPlayThump__pf)
 				{
@@ -991,7 +1036,7 @@ void Achoppable_C__pf1172009058::bpf__ExecuteUbergraph_choppable__pf_3(int32 bpp
 					break;
 				}
 			}
-		case 85:
+		case 88:
 			{
 				if(IsValid(b0l__K2Node_Event_MyComp__pf))
 				{
@@ -1003,23 +1048,23 @@ void Achoppable_C__pf1172009058::bpf__ExecuteUbergraph_choppable__pf_3(int32 bpp
 					break;
 				}
 			}
-		case 86:
+		case 89:
 			{
 				bpfv__CallFunc_VSize_ReturnValue3__pf = UKismetMathLibrary::VSize(b0l__K2Node_Event_NormalImpulse__pf);
 				if(IsValid(b0l__K2Node_Event_MyComp__pf))
 				{
-					bpfv__CallFunc_GetMass_ReturnValue3__pf = b0l__K2Node_Event_MyComp__pf->GetMass();
+					bpfv__CallFunc_GetMass_ReturnValue4__pf = b0l__K2Node_Event_MyComp__pf->GetMass();
 				}
-				bpfv__CallFunc_Divide_FloatFloat_ReturnValue__pf = FCustomThunkTemplates::Divide_FloatFloat(bpfv__CallFunc_VSize_ReturnValue3__pf, bpfv__CallFunc_GetMass_ReturnValue3__pf);
+				bpfv__CallFunc_Divide_FloatFloat_ReturnValue__pf = FCustomThunkTemplates::Divide_FloatFloat(bpfv__CallFunc_VSize_ReturnValue3__pf, bpfv__CallFunc_GetMass_ReturnValue4__pf);
 				bpfv__CallFunc_Divide_FloatFloat_ReturnValue2__pf = FCustomThunkTemplates::Divide_FloatFloat(bpfv__CallFunc_Divide_FloatFloat_ReturnValue__pf, 500.000000);
-				bpfv__CallFunc_GreaterEqual_FloatFloat_ReturnValue__pf = UKismetMathLibrary::GreaterEqual_FloatFloat(bpfv__CallFunc_Divide_FloatFloat_ReturnValue2__pf, 0.300000);
-				if (!bpfv__CallFunc_GreaterEqual_FloatFloat_ReturnValue__pf)
+				bpfv__CallFunc_GreaterEqual_FloatFloat_ReturnValue2__pf = UKismetMathLibrary::GreaterEqual_FloatFloat(bpfv__CallFunc_Divide_FloatFloat_ReturnValue2__pf, 0.300000);
+				if (!bpfv__CallFunc_GreaterEqual_FloatFloat_ReturnValue2__pf)
 				{
 					__CurrentState = -1;
 					break;
 				}
 			}
-		case 87:
+		case 90:
 			{
 				bpfv__CallFunc_IsValid_ReturnValue4__pf = UKismetSystemLibrary::IsValid(bpv__thumpSound__pf);
 				if (!bpfv__CallFunc_IsValid_ReturnValue4__pf)
@@ -1028,43 +1073,26 @@ void Achoppable_C__pf1172009058::bpf__ExecuteUbergraph_choppable__pf_3(int32 bpp
 					break;
 				}
 			}
-		case 88:
+		case 91:
 			{
 				bpv__canPlayThump__pf = false;
 			}
-		case 89:
+		case 92:
 			{
 				bpfv__CallFunc_VSize_ReturnValue3__pf = UKismetMathLibrary::VSize(b0l__K2Node_Event_NormalImpulse__pf);
 				if(IsValid(b0l__K2Node_Event_MyComp__pf))
 				{
-					bpfv__CallFunc_GetMass_ReturnValue3__pf = b0l__K2Node_Event_MyComp__pf->GetMass();
+					bpfv__CallFunc_GetMass_ReturnValue4__pf = b0l__K2Node_Event_MyComp__pf->GetMass();
 				}
-				bpfv__CallFunc_Divide_FloatFloat_ReturnValue__pf = FCustomThunkTemplates::Divide_FloatFloat(bpfv__CallFunc_VSize_ReturnValue3__pf, bpfv__CallFunc_GetMass_ReturnValue3__pf);
+				bpfv__CallFunc_Divide_FloatFloat_ReturnValue__pf = FCustomThunkTemplates::Divide_FloatFloat(bpfv__CallFunc_VSize_ReturnValue3__pf, bpfv__CallFunc_GetMass_ReturnValue4__pf);
 				bpfv__CallFunc_Divide_FloatFloat_ReturnValue2__pf = FCustomThunkTemplates::Divide_FloatFloat(bpfv__CallFunc_Divide_FloatFloat_ReturnValue__pf, 500.000000);
 				bpfv__CallFunc_FClamp_ReturnValue2__pf = UKismetMathLibrary::FClamp(bpfv__CallFunc_Divide_FloatFloat_ReturnValue2__pf, 0.000000, 2.000000);
 				bpfv__CallFunc_FClamp_ReturnValue3__pf = UKismetMathLibrary::FClamp(bpfv__CallFunc_Divide_FloatFloat_ReturnValue2__pf, 0.000000, 1.000000);
 				UGameplayStatics::PlaySoundAtLocation(this, bpv__thumpSound__pf, b0l__K2Node_Event_HitLocation__pf, FRotator(0.000000,0.000000,0.000000), bpfv__CallFunc_FClamp_ReturnValue3__pf, bpfv__CallFunc_FClamp_ReturnValue2__pf, 0.000000, CastChecked<USoundAttenuation>(CastChecked<UDynamicClass>(Achoppable_C__pf1172009058::StaticClass())->UsedAssets[12], ECastCheckedType::NullAllowed), CastChecked<USoundConcurrency>(CastChecked<UDynamicClass>(Achoppable_C__pf1172009058::StaticClass())->UsedAssets[13], ECastCheckedType::NullAllowed));
 			}
-		case 90:
+		case 93:
 			{
-				UKismetSystemLibrary::Delay(this, 0.500000, FLatentActionInfo(15, 1335260775, TEXT("ExecuteUbergraph_choppable_3"), this));
-				__CurrentState = -1;
-				break;
-			}
-		default:
-			break;
-		}
-	} while( __CurrentState != -1 );
-}
-void Achoppable_C__pf1172009058::bpf__ExecuteUbergraph_choppable__pf_4(int32 bpp__EntryPoint__pf)
-{
-	int32 __CurrentState = bpp__EntryPoint__pf;
-	do
-	{
-		switch( __CurrentState )
-		{
-		case 91:
-			{
+				UKismetSystemLibrary::Delay(this, 0.500000, FLatentActionInfo(15, 1335260775, TEXT("ExecuteUbergraph_choppable_4"), this));
 				__CurrentState = -1;
 				break;
 			}
@@ -1137,7 +1165,7 @@ void Achoppable_C__pf1172009058::bpf__ExecuteUbergraph_choppable__pf_5(int32 bpp
 				__CurrentState = 61;
 				break;
 			}
-		case 82:
+		case 85:
 			{
 				__CurrentState = 65;
 				break;
@@ -1154,12 +1182,12 @@ void Achoppable_C__pf1172009058::bpf__ExecuteUbergraph_choppable__pf_6(int32 bpp
 	{
 		switch( __CurrentState )
 		{
-		case 80:
+		case 83:
 			{
-				__CurrentState = 81;
+				__CurrentState = 84;
 				break;
 			}
-		case 81:
+		case 84:
 			{
 				bpf__dropFunction__pf(b0l__K2Node_Event_component__pf, b0l__K2Node_Event_component__pf, b0l__K2Node_Event_component__pf);
 				__CurrentState = -1;
@@ -1177,12 +1205,12 @@ void Achoppable_C__pf1172009058::bpf__ExecuteUbergraph_choppable__pf_7(int32 bpp
 	{
 		switch( __CurrentState )
 		{
-		case 78:
+		case 81:
 			{
-				__CurrentState = 79;
+				__CurrentState = 82;
 				break;
 			}
-		case 79:
+		case 82:
 			{
 				bpf__pickupFunction__pf(b0l__K2Node_Event_Component2__pf, b0l__K2Node_Event_Component2__pf, b0l__K2Node_Event_AttachTo__pf, b0l__K2Node_Event_Component2__pf, b0l__K2Node_Event_AttachTo__pf);
 				__CurrentState = -1;
@@ -1252,15 +1280,15 @@ void Achoppable_C__pf1172009058::bpf__ExecuteUbergraph_choppable__pf_10(int32 bp
 }
 void Achoppable_C__pf1172009058::bpf__highlight__pf()
 {
-	bpf__ExecuteUbergraph_choppable__pf_1(93);
+	bpf__ExecuteUbergraph_choppable__pf_1(96);
 }
 void Achoppable_C__pf1172009058::bpf__stickToWeapon__pf()
 {
-	bpf__ExecuteUbergraph_choppable__pf_2(92);
+	bpf__ExecuteUbergraph_choppable__pf_2(95);
 }
 void Achoppable_C__pf1172009058::bpf__bsod__pf()
 {
-	bpf__ExecuteUbergraph_choppable__pf_4(91);
+	bpf__ExecuteUbergraph_choppable__pf_3(94);
 }
 void Achoppable_C__pf1172009058::bpf__ReceiveHit__pf(UPrimitiveComponent* bpp__MyComp__pf, AActor* bpp__Other__pf, UPrimitiveComponent* bpp__OtherComp__pf, bool bpp__bSelfMoved__pf, FVector bpp__HitLocation__pf, FVector bpp__HitNormal__pf, FVector bpp__NormalImpulse__pf, /*out*/ FHitResult const& bpp__Hit__pf__const)
 {
@@ -1274,24 +1302,24 @@ void Achoppable_C__pf1172009058::bpf__ReceiveHit__pf(UPrimitiveComponent* bpp__M
 	b0l__K2Node_Event_HitNormal__pf = bpp__HitNormal__pf;
 	b0l__K2Node_Event_NormalImpulse__pf = bpp__NormalImpulse__pf;
 	b0l__K2Node_Event_Hit__pf = bpp__Hit__pf;
-	bpf__ExecuteUbergraph_choppable__pf_3(83);
+	bpf__ExecuteUbergraph_choppable__pf_4(86);
 }
 void Achoppable_C__pf1172009058::bpf__freezeChoppable__pf(bool bpp__playFreezeSound__pf, UPrimitiveComponent* bpp__currentComponent__pf)
 {
 	b0l__K2Node_CustomEvent_playFreezeSound__pf = bpp__playFreezeSound__pf;
 	b0l__K2Node_CustomEvent_currentComponent__pf = bpp__currentComponent__pf;
-	bpf__ExecuteUbergraph_choppable__pf_5(82);
+	bpf__ExecuteUbergraph_choppable__pf_5(85);
 }
 void Achoppable_C__pf1172009058::bpf__DropComponent__pf(UPrimitiveComponent* bpp__component__pf)
 {
 	b0l__K2Node_Event_component__pf = bpp__component__pf;
-	bpf__ExecuteUbergraph_choppable__pf_6(80);
+	bpf__ExecuteUbergraph_choppable__pf_6(83);
 }
 void Achoppable_C__pf1172009058::bpf__PickupComponent__pf(USceneComponent* bpp__AttachTo__pf, UPrimitiveComponent* bpp__Component__pf)
 {
 	b0l__K2Node_Event_AttachTo__pf = bpp__AttachTo__pf;
 	b0l__K2Node_Event_Component2__pf = bpp__Component__pf;
-	bpf__ExecuteUbergraph_choppable__pf_7(78);
+	bpf__ExecuteUbergraph_choppable__pf_7(81);
 }
 void Achoppable_C__pf1172009058::bpf__chopEvent__pf(FHitResult bpp__hit__pf, UStaticMeshComponent* bpp__axe__pf, UProceduralMeshComponent* bpp__component__pf, FVector bpp__impulse__pf)
 {
